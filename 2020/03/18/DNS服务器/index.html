@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","width":230,"display":"post","padding":15,"offset":10,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="概述DNS&amp;emsp;&amp;emsp;DNS域名服务是把域名翻译成IP地址的软件称为域名系统，即DNS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DNS域名服务">
+<meta property="og:url" content="http://yoursite.com/2020/03/18/DNS%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
+<meta property="og:site_name" content="W7">
+<meta property="og:description" content="概述DNS&amp;emsp;&amp;emsp;DNS域名服务是把域名翻译成IP地址的软件称为域名系统，即DNS">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2020/03/18/DNS%E6%9C%8D%E5%8A%A1%E5%99%A8/error.png">
+<meta property="article:published_time" content="2020-03-18T08:16:50.000Z">
+<meta property="article:modified_time" content="2020-04-13T08:34:27.364Z">
+<meta property="article:author" content="W7">
+<meta property="article:tag" content="实验？">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/18/DNS%E6%9C%8D%E5%8A%A1%E5%99%A8/error.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/03/18/DNS%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>DNS域名服务 | W7</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">W7</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">欢迎光临本破站</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>链接</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-fw fa-calendar"></i>葵花宝典</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/18/DNS%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="W7">
+      <meta itemprop="description" content="知识是一种乐趣，好奇是知识的萌芽">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="W7">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          DNS域名服务
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-18 16:16:50" itemprop="dateCreated datePublished" datetime="2020-03-18T16:16:50+08:00">2020-03-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-13 16:34:27" itemprop="dateModified" datetime="2020-04-13T16:34:27+08:00">2020-04-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h3><p>&emsp;&emsp;DNS域名服务是把域名翻译成IP地址的软件称为域名系统，即DNS<a id="more"></a>。它是一种管理名字的方法。这种方法是：分不同的组来负责各子系统的名字。系统中的每一层叫做一个域，每个域用一个点分开。所谓域名服务器（即Domain Name Server，简称Name Server）实际上就是装有域名系统的主机。它是一种能够实现名字解析的分层结构数据库。</p>
+<h3 id="关于域名"><a href="#关于域名" class="headerlink" title="关于域名"></a>关于域名</h3><p><strong><strong>DNS的结构分为顶级域名和一级域名</strong></strong><br>&emsp;&emsp;顶级域名是用以识别域名所属类别、应用范围、注册国家等公用信息的代码。 通用顶级域名指的是来自任何国家的任何人都可以自由使用的顶级域名，如”.COM”代表商业 实体；”.org”代表非营利性组织；”.net”代表网络服务者；专用顶级域名”.mil”代表军事机构；”.edu”代表教育机构；”.gov”代表政府机构。凡属于美国的机构，在此顶级域名下注册时，无需加注国家代码。<br><strong><strong>国家代码</strong></strong><br>&emsp;&emsp;此标准是将国家与地区的英文名称缩写为两位英文字母形成代码，如cn代表中国；hk 代表 香港；tw代表          中国台湾；us代表美国；uk代表英国等等。多数国家要求凡在域名 中加入其国家代码的，主机必须处于该国。          但也有些国家并无这方面的要求。<br><strong><strong>二级域名</strong></strong><br>&emsp;&emsp;指由域名使用者自己设计的，能够体现使用者的特殊性，并据以同其他人的域名相区别的字符串。<br><strong><strong>反向域</strong></strong><br>&emsp;&emsp;.in-addr.arpa即是把IP地址反过来写加上这个后缀，如172.16.1.1的反向域为1.1.16.172.in-addr.arpa这里的.              一个都不可以少。</p>
+<h3 id="DNS服务器"><a href="#DNS服务器" class="headerlink" title="DNS服务器"></a>DNS服务器</h3><p><strong><strong>顶级/根域名服务器</strong></strong><br>&emsp;&emsp;根服务器可以说是管理互联网的主目录，是架构因特网所必须的基础设施。在国外，许多计算机科学家将根域名服务器称作“真理”（TRUTH），足见其重要性。换句话说——攻击整个因特网最有力、最直接，也是最致命的方法恐怕就是攻击根域名服务器了。现在全球有13台原有IPv4根服务器加25台IPv6根服务器，为建立多边、民主、透明的国际互联网治理体系打下坚实基础。中国部署了其中的4台，由1台主IPv6根服务器和3台辅根服务器组成，打破了中国过去没有根服务器的困境。<br><strong><strong>主域名服务器</strong></strong><br>&emsp;&emsp;负责维护一个区域的所有域名信息，是特定的所有信息的权威信息源，数据可以修改。<br><strong><strong>辅助域名服务器</strong></strong><br>&emsp;&emsp;当主域名服务器出现故障、关闭或负载过重时，辅助域名服务器作为主域名服务器的备份提供域名解析服务。辅助域名服务器中的区域文件中的数据是从另外的一台主域名服务器中复制过来的，是不可以修改的。<br><strong><strong>缓存域名服务器</strong></strong><br>&emsp;&emsp;从某个远程服务器取得每次域名服务器的查询回答，一旦取得一个答案就将它放在高速缓存中，以后查询相同的信息就用高速缓存中的数据回答，缓存域名服务器不是权威的域名服务器，因为它提供的信息都是间接信息。<br><strong><strong>转发域名服务器</strong></strong><br>&emsp;&emsp;负责所有非本地域名的本地查询。转发域名服务器接到查询请求后，在其缓存中查找，如找不到就将请求依次转发到指定的域名服务器，直到查找到结果为止，否则返回无法映射的结果。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>&emsp;&emsp;之所以域名解析不需要很长时间，是因为上网接入商，比如北京电信，河南电信等，为了要加速用户打开网页的速度，通常在他们的DNS服务器中缓存了很多域名的DNS记录。这样这个接入商的用户要打开某个网页时，接入商的服务器不需要去查询域名数据库，而是把自己缓存中的DNS记录直接使用，从而加快用户访问网站的速度。</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>&emsp;&emsp;上网接入商ISP的缓存会存储一段时间，只在需要的时候才更新，而更新的频率没有什么标准。有的ISP可能1小时更新一次，有的可能长达一两天才更新一次。所以新注册的域名一般来说解析反倒比较快。因为所有的ISP都没有缓存，用户访问时ISP都是要查询域名数据库，得到最新的DNS数据。而老域名如果更改了DNS记录，但世界各地的ISP缓存数据却并不是立即更新的。这样不同ISP下的不同用户，有的可以比较快的获取新的DNS记录，有的就要等ISP缓存的下一次更新。</p>
+<h2 id="DNS-1"><a href="#DNS-1" class="headerlink" title="DNS"></a>DNS</h2><h3 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h3><p>&emsp;&emsp;网络客户端就是我们平常使用的电脑，打开浏览器，输入一个域名。比如输入<a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a>. 这时，你使用的电脑会发出一个DNS请求到本地DNS服务器。本地DNS服务器一般都是你的网络接入服务器商提供，比如中国电信，中国移动。查询<a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> 的DNS请求到达本地DNS服务器之后，本地DNS服务器会首先查询它的缓存记录，如果缓存中有此条记录，就可以直接返回结果。如果没有，本地DNS服务器还要向DNS根服务器进行查询。根DNS服务器没有记录具体的域名和IP地址的对应关系，而是告诉本地DNS服务器，你可以到域服务器上去继续查询，并给出域服务器的地址。本地DNS服务器继续向域服务器发出请求，在这个例子中，请求的对象是.com域服务器。.com域服务器收到请求之后，也不会直接返回域名和IP地址的对应关系，而是告诉本地DNS服务器，你的域名的解析服务器的地址。最后，本地DNS服务器向域名的解析服务器发出请求，这时就能收到一个域名和IP地址对应关系，本地DNS服务器不仅要把IP地址返回给用户电脑，还要把这个对应关系保存在缓存中，以备下次别的用户查询时，可以直接返回结果，加快网络访问。</p>
+<p>可以看这个：<a href="https://juejin.im/post/5b0a32a36fb9a07ab979f0b4来源：掘金" target="_blank" rel="noopener">https://juejin.im/post/5b0a32a36fb9a07ab979f0b4来源：掘金</a></p>
+<h3 id="记录类型及DNS数据库文件格式"><a href="#记录类型及DNS数据库文件格式" class="headerlink" title="记录类型及DNS数据库文件格式"></a>记录类型及DNS数据库文件格式</h3><p>DNS数据库文件是一个文本文件，只能包含资源记录或宏定义<br><strong><strong>资源记录的格式：</strong></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name          [ttl]            IN              rrtype                  value</span><br></pre></td></tr></table></figure>
+<p>例如，<a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a>  假如他的IP为192.168.0.0<br>那么它的格式应该写为以下这样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name              [ttl]             IN               rrtype                 value</span><br><span class="line">www.baidu.com.     200         	    IN                 A                    192.168.0.0</span><br></pre></td></tr></table></figure>
+<p>com后面的点不可少省，[ttl]的时间单位是秒可以省略不写，<br>IN是关键是这个不变，rrtype是记录文件类型,value是值。<br>SOA是区域数据为文件的第一条记录只能有一个<br>name:区域名称，如badu.com.通常可以简写为@<br>value:主DNS的</p>
+<h3 id="A记录"><a href="#A记录" class="headerlink" title="A记录"></a>A记录</h3><p>A（Address)记录是用来指定主机名（或域名）对应的IP地址记录。就是服务器的IP，域名绑定，就是告诉DNS当你输入域名的时候给你引导向设置在DNS的A记录所对应的服务器。简单的说，A记录是指定域名对应的IP地址。</p>
+<h3 id="NS记录"><a href="#NS记录" class="headerlink" title="NS记录"></a>NS记录</h3><p>NS（Name Server)记录是域名服务器记录，用来指定该域名由哪个DNS服务器来进行解析。您注册域名时，总有默认的DNS服务器，每一个注册的域名都是一个DNS服务器来进行解析的。</p>
+<h3 id="MX记录"><a href="#MX记录" class="headerlink" title="MX记录"></a>MX记录</h3><p>MX（Mail Exchanger)记录是邮件交换记录，它指向一个邮件服务器，用于电子邮件系统发邮件时根据收信人的地址后缀来定位邮件服务器。</p>
+<h3 id="CNAME记录"><a href="#CNAME记录" class="headerlink" title="CNAME记录"></a>CNAME记录</h3><p>CNAME(canonical Name)别名记录，允许您将多个名字映射到同一台计算机。通常用于同时提供www和mail服务的计算机。</p>
+<h3 id="TXT记录-TTL值"><a href="#TXT记录-TTL值" class="headerlink" title="TXT记录/TTL值"></a>TXT记录/TTL值</h3><p><strong><strong>TXT记录</strong></strong><br>TXT记录，一般指某个主机名或域名的说明，多数指管理员的邮箱地址。<br><strong><strong>TTL值</strong></strong><br>TTL(Time-To-Live):是IP协议包中的一个值，它告诉网络路由器包在网络中的时间是否太长而被丢弃。有很多原因使包在一定时间内不能被传递到目的地。就是一条域名解析记录在DNS服务器中的存留时间。当各地的DNS服务器接受到解析请求时，就会向域名指定的NS服务器发出解析请求从而获得解析记录；在获得这个记录后，记录会在DNS服务器中保存一段时间，这段时间内如时果再接到这个域名的解析请求，DNS服务器将不再向NS服务器发出请求，而是直接返回刚才获得的记录，而这个记录在DNS服务器上保留的时间，就是TTL值。</p>
+<h3 id="PTR值"><a href="#PTR值" class="headerlink" title="PTR值"></a>PTR值</h3><p>PTR用一个IP地址映射到对应的域名，也就是A记录的反向，就是IP地址反向解析。</p>
+<h3 id="DNS数据库的记录：正解、反解、Zone的意义"><a href="#DNS数据库的记录：正解、反解、Zone的意义" class="headerlink" title="DNS数据库的记录：正解、反解、Zone的意义"></a>DNS数据库的记录：正解、反解、Zone的意义</h3><p>主机名（FQDN)的查询到IP的流程为：正解。<br>从IP到主机名(FQDN)的查询的流程为：反解。<br>不管是正解还是反解，每个域的记录就是一个域（Zone),也叫做地址池。<br><strong><strong>正解文件资源记录（Resource Rrcord,RR)格式：</strong></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[domain]          [ttl]        IN       [RR type]     [RR data]</span><br><span class="line">[待查数据]   [暂存时间（秒）]    IN       [资源类型]     [资源内容]</span><br></pre></td></tr></table></figure>
+<p>一般ttl是可以省略的<br><strong><strong>常见的正解文件记录格式如下：</strong></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[domai]           IN          [RR type]           [RR data]</span><br><span class="line"></span><br><span class="line">主机名.           IN           A                   IPV4的IP地址</span><br><span class="line"></span><br><span class="line">主机名.           IN           AAAA                IPV6的IP地址</span><br><span class="line"></span><br><span class="line">域名.             IN           NS                  服务器主机的名子</span><br><span class="line"></span><br><span class="line">域名.             IN           SOA                 管理这个域名的重要参数</span><br><span class="line"></span><br><span class="line">域名.             IN           MX         优先级    接收邮件的服务器主机名子</span><br><span class="line"></span><br><span class="line">主机别名.         IN           CNAME               实际代表这个主机别名的主机名字</span><br></pre></td></tr></table></figure>
+<p><strong><strong>RR type的解释</strong></strong></p>
+<ol>
+<li>A　AAAA：        查询IP的记</li>
+<li>NS：            查询管理区域名的服务器主机</li>
+<li>SOA：            查询管理域名的服务器管理信</li>
+<li>CNAME：        设置某主机的别</li>
+<li>MX：            查询某域名的邮件服务器主机名</li>
+</ol>
+<p><strong><strong>反解文件记录的RR数</strong></strong><br>   反解的Zone必须把IP反过来写，而在结尾加上.in-addr.arpa<br>   PRT就是反解，即是查询IP反对应的主机名。</p>
+<h2 id="虚拟机搭建本地dns"><a href="#虚拟机搭建本地dns" class="headerlink" title="虚拟机搭建本地dns"></a>虚拟机搭建本地dns</h2><h3 id="软件：bind"><a href="#软件：bind" class="headerlink" title="软件：bind"></a>软件：bind</h3><p>BIND是在互联网上使用最广泛的域名系统‘DNS软件’。在类似Unix的操作系统上充当一个或多个特定域的权威名称服务器，并充当DNS系统的递归解析器。&gt;&gt;&gt;参见<a href="https://en.wikipedia.org/wiki/BIND" target="_blank" rel="noopener">Wiki</a><br>在RHEL6.5中，系统光盘自带了BIND服务的安装文件<br><strong><strong>各软件包的主要作用：</strong></strong><br>bind：提供了域名服务的主要程序及相关文件<br>bind-utils：提供了对DNS服务器的测试工具，如nslookup等<br>bind-libs：提供了bind、bind-utils需要使用的函数库<br>bind-chroot：提供一个伪装根目录(将/var/named/chroot/作为BIND的根目录),提高安全性</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><strong><strong>默认已安装bind-utils和bind-libs</strong></strong><br>插入系统光盘，挂载，安装完毕后，会自动增加一个名为named的系统服务：</p>
+<pre><code># mount  /dev/cdrom  /media/                        
+
+# rpm -ivh /media/Packages/bind-9.8.2* * * .rpm     
+
+# rpm -ivh /media/Packages/bind-chroot-9.8.2* * * .rpm
+
+# service  named  start                                </code></pre><p><strong><strong>手动安装</strong></strong><br>yum install安装就这问题也没搞定，</p>
+<img src="/2020/03/18/DNS%E6%9C%8D%E5%8A%A1%E5%99%A8/error.png" class="" title="the error">
+<p>ping 8.8.8.8没通，原来自己的dns都有问题···<br>于是&gt;&gt;&gt;</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>待</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>待</p>
+
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">============本文结束( ´◔ ‸◔`)感谢您的阅读============</div>
+    
+</div>
+      
+    </div>
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>W7
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2020/03/18/DNS%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="DNS域名服务">http://yoursite.com/2020/03/18/DNS服务器/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%AE%9E%E9%AA%8C%EF%BC%9F/" rel="tag"># 实验？</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/11/%E7%BB%93%E6%9D%9F%E8%AF%AD/" rel="prev" title="结束语">
+      <i class="fa fa-chevron-left"></i> 结束语
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/19/QQ-XML/" rel="next" title="QQ/XML">
+      QQ/XML <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DNS"><span class="nav-number">1.1.</span> <span class="nav-text">DNS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于域名"><span class="nav-number">1.2.</span> <span class="nav-text">关于域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DNS服务器"><span class="nav-number">1.3.</span> <span class="nav-text">DNS服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">1.4.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">1.5.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS-1"><span class="nav-number">2.</span> <span class="nav-text">DNS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#域名解析"><span class="nav-number">2.1.</span> <span class="nav-text">域名解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#记录类型及DNS数据库文件格式"><span class="nav-number">2.2.</span> <span class="nav-text">记录类型及DNS数据库文件格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A记录"><span class="nav-number">2.3.</span> <span class="nav-text">A记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NS记录"><span class="nav-number">2.4.</span> <span class="nav-text">NS记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MX记录"><span class="nav-number">2.5.</span> <span class="nav-text">MX记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CNAME记录"><span class="nav-number">2.6.</span> <span class="nav-text">CNAME记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TXT记录-TTL值"><span class="nav-number">2.7.</span> <span class="nav-text">TXT记录&#x2F;TTL值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PTR值"><span class="nav-number">2.8.</span> <span class="nav-text">PTR值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DNS数据库的记录：正解、反解、Zone的意义"><span class="nav-number">2.9.</span> <span class="nav-text">DNS数据库的记录：正解、反解、Zone的意义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟机搭建本地dns"><span class="nav-number">3.</span> <span class="nav-text">虚拟机搭建本地dns</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#软件：bind"><span class="nav-number">3.1.</span> <span class="nav-text">软件：bind</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">3.2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置"><span class="nav-number">3.3.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试"><span class="nav-number">3.4.</span> <span class="nav-text">测试</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="W7"
+      src="/images/head.jpg">
+  <p class="site-author-name" itemprop="name">W7</p>
+  <div class="site-description" itemprop="description">知识是一种乐趣，好奇是知识的萌芽</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wemaxel" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wemaxel" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:i@wqian.top" title="E-Mail → mailto:i@wqian.top" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/5529099160?is_all=1" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;5529099160?is_all&#x3D;1" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/images/weichat.jpg" title="WeChat → &#x2F;images&#x2F;weichat.jpg"><i class="fa fa-fw fa-weixin"></i></a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+      <div style="">
+  <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+</div>
+<script>
+(function(){
+
+   var digit=
+    [
+        [
+            [0,0,1,1,1,0,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,0,1,1,0],
+            [0,0,1,1,1,0,0]
+        ],//0
+        [
+            [0,0,0,1,1,0,0],
+            [0,1,1,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [1,1,1,1,1,1,1]
+        ],//1
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,1,1],
+            [1,1,1,1,1,1,1]
+        ],//2
+        [
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//3
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,0],
+            [0,0,1,1,1,1,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,1,1,0],
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,1]
+        ],//4
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,1,1,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//5
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//6
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0]
+        ],//7
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//8
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,1,1,0,0,0,0]
+        ],//9
+        [
+            [0,0,0,0,0,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,0,0,0]
+        ]//:
+    ];
+
+var canvas = document.getElementById('canvas');
+
+if(canvas.getContext){
+    var cxt = canvas.getContext('2d');
+    //声明canvas的宽高
+    var H = 100,W = 700;
+    canvas.height = H;
+    canvas.width = W;
+    cxt.fillStyle = '#f00';
+    cxt.fillRect(10,10,50,50);
+
+    //存储时间数据
+    var data = [];
+    //存储运动的小球
+    var balls = [];
+    //设置粒子半径
+    var R = canvas.height/20-1;
+    (function(){
+        var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+        //存储时间数字，由十位小时、个位小时、冒号、十位分钟、个位分钟、冒号、十位秒钟、个位秒钟这7个数字组成
+        data.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+    })();
+
+    /*生成点阵数字*/
+    function renderDigit(index,num){
+        for(var i = 0; i < digit[num].length; i++){
+            for(var j = 0; j < digit[num][i].length; j++){
+                if(digit[num][i][j] == 1){
+                    cxt.beginPath();
+                    cxt.arc(14*(R+2)*index + j*2*(R+1)+(R+1),i*2*(R+1)+(R+1),R,0,2*Math.PI);
+                    cxt.closePath();
+                    cxt.fill();
+                }
+            }
+        }
+    }
+
+    /*更新时钟*/
+    function updateDigitTime(){
+        var changeNumArray = [];
+        var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+        var NewData = [];
+        NewData.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+        for(var i = data.length-1; i >=0 ; i--){
+            //时间发生变化
+            if(NewData[i] !== data[i]){
+                //将变化的数字值和在data数组中的索引存储在changeNumArray数组中
+                changeNumArray.push(i+'_'+(Number(data[i])+1)%10);
+            }
+        }
+        //增加小球
+        for(var i = 0; i< changeNumArray.length; i++){
+            addBalls.apply(this,changeNumArray[i].split('_'));
+        }
+        data = NewData.concat();
+    }
+
+    /*更新小球状态*/
+    function updateBalls(){
+        for(var i = 0; i < balls.length; i++){
+            balls[i].stepY += balls[i].disY;
+            balls[i].x += balls[i].stepX;
+            balls[i].y += balls[i].stepY;
+            if(balls[i].x > W + R || balls[i].y > H + R){
+                balls.splice(i,1);
+                i--;
+            }
+        }
+    }
+
+    /*增加要运动的小球*/
+    function addBalls(index,num){
+        var numArray = [1,2,3];
+        var colorArray =  ["#3BE","#09C","#A6C","#93C","#9C0","#690","#FB3","#F80","#F44","#C00"];
+        for(var i = 0; i < digit[num].length; i++){
+            for(var j = 0; j < digit[num][i].length; j++){
+                if(digit[num][i][j] == 1){
+                    var ball = {
+                        x:14*(R+2)*index + j*2*(R+1)+(R+1),
+                        y:i*2*(R+1)+(R+1),
+                        stepX:Math.floor(Math.random() * 4 -2),
+                        stepY:-2*numArray[Math.floor(Math.random()*numArray.length)],
+                        color:colorArray[Math.floor(Math.random()*colorArray.length)],
+                        disY:1
+                    };
+                    balls.push(ball);
+                }
+            }
+        }
+    }
+
+    /*渲染*/
+    function render(){
+        //重置画布宽度，达到清空画布的效果
+        canvas.height = 100;
+        //渲染时钟
+        for(var i = 0; i < data.length; i++){
+            renderDigit(i,data[i]);
+        }
+        //渲染小球
+        for(var i = 0; i < balls.length; i++){
+            cxt.beginPath();
+            cxt.arc(balls[i].x,balls[i].y,R,0,2*Math.PI);
+            cxt.fillStyle = balls[i].color;
+            cxt.closePath();
+            cxt.fill();
+        }
+    }
+
+    clearInterval(oTimer);
+    var oTimer = setInterval(function(){
+        //更新时钟
+        updateDigitTime();
+        //更新小球状态
+        updateBalls();
+        //渲染
+        render();
+    },50);
+}
+
+})();
+</script>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+<span class="with-love" id="animate" style="font-size: 13px">
+  <i class="fa fa-heart"></i>
+</span>
+  <span class="author" itemprop="copyrightHolder">W7</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  <!-- 页面点击心形 -->
+<script type="text/javascript" src="/js/clicklove.js"></script>
+<script src="/live2d-widget/autoload.js"></script>
+</body>
+</html>
+

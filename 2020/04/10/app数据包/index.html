@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","width":230,"display":"post","padding":15,"offset":10,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="用wireshark就简单，设置好代理应该是可以抓到手机上的数据流量了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="app数据包">
+<meta property="og:url" content="http://yoursite.com/2020/04/10/app%E6%95%B0%E6%8D%AE%E5%8C%85/index.html">
+<meta property="og:site_name" content="W7">
+<meta property="og:description" content="用wireshark就简单，设置好代理应该是可以抓到手机上的数据流量了">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2020/04/10/app%E6%95%B0%E6%8D%AE%E5%8C%85/shouji.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/04/10/app%E6%95%B0%E6%8D%AE%E5%8C%85/diannao.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/10/app%E6%95%B0%E6%8D%AE%E5%8C%85/result.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/10/app%E6%95%B0%E6%8D%AE%E5%8C%85/ca.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/10/app%E6%95%B0%E6%8D%AE%E5%8C%85/aca.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/04/10/app%E6%95%B0%E6%8D%AE%E5%8C%85/acaa.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/04/10/app%E6%95%B0%E6%8D%AE%E5%8C%85/acok.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/04/10/app%E6%95%B0%E6%8D%AE%E5%8C%85/https.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/10/app%E6%95%B0%E6%8D%AE%E5%8C%85/fidder1.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/10/app%E6%95%B0%E6%8D%AE%E5%8C%85/fiddler2.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/10/app%E6%95%B0%E6%8D%AE%E5%8C%85/fiddler3.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/10/app%E6%95%B0%E6%8D%AE%E5%8C%85/fiddler4.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/10/app%E6%95%B0%E6%8D%AE%E5%8C%85/fdca.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/04/10/app%E6%95%B0%E6%8D%AE%E5%8C%85/fdburp.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/10/app%E6%95%B0%E6%8D%AE%E5%8C%85/unsafe.png">
+<meta property="article:published_time" content="2020-04-10T15:10:54.000Z">
+<meta property="article:modified_time" content="2020-04-28T14:36:26.270Z">
+<meta property="article:author" content="W7">
+<meta property="article:tag" content="Burpsuit">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/04/10/app%E6%95%B0%E6%8D%AE%E5%8C%85/shouji.jpg">
+
+<link rel="canonical" href="http://yoursite.com/2020/04/10/app%E6%95%B0%E6%8D%AE%E5%8C%85/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>app数据包 | W7</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">W7</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">欢迎光临本破站</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>链接</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-fw fa-calendar"></i>葵花宝典</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/10/app%E6%95%B0%E6%8D%AE%E5%8C%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="W7">
+      <meta itemprop="description" content="知识是一种乐趣，好奇是知识的萌芽">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="W7">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          app数据包
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-10 23:10:54" itemprop="dateCreated datePublished" datetime="2020-04-10T23:10:54+08:00">2020-04-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-28 22:36:26" itemprop="dateModified" datetime="2020-04-28T22:36:26+08:00">2020-04-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/brup/" itemprop="url" rel="index"><span itemprop="name">brup</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>用wireshark就简单，设置好代理应该是可以抓到手机上的数据流量了<a id="more"></a>，但是说的Fiddler和burpsuite在抓包上偏向请求和响应的数据，而wireshark偏向于数据帧。那就还用burp呗~~</p>
+<h2 id="手机上设置代理"><a href="#手机上设置代理" class="headerlink" title="手机上设置代理"></a>手机上设置代理</h2><img src="shouji.jpg" width="200px;" height="300px;" title="手机截图." alt="手机截图."/>
+
+<h3 id="电脑上也一样"><a href="#电脑上也一样" class="headerlink" title="电脑上也一样"></a>电脑上也一样</h3><p><img src="diannao.png" alt=""></p>
+<h3 id="看到应该是可以了吧，但这时候还没导入证书"><a href="#看到应该是可以了吧，但这时候还没导入证书" class="headerlink" title="看到应该是可以了吧，但这时候还没导入证书"></a>看到应该是可以了吧，但这时候还没导入证书</h3><p><img src="result.png" alt=""></p>
+<h3 id="下载证书并导入手机，（手机中只能导入-cer的证书。）"><a href="#下载证书并导入手机，（手机中只能导入-cer的证书。）" class="headerlink" title="下载证书并导入手机，（手机中只能导入.cer的证书。）"></a>下载证书并导入手机，（手机中只能导入.cer的证书。）</h3><img src="ca.png" width="500px;" height="200px;" title="电脑截图." alt="截图."/>
+<img src="aca.jpg" width="200px;" height="300px;" title="手机截图." alt="手机截图."/>
+<img src="acaa.jpg" width="200px;" height="300px;" title="手机截图." alt="手机截图."/>
+<img src="acok.jpg" width="200px;" height="300px;" title="手机截图." alt="手机截图."/>
+
+
+<h3 id="这时候就可以看到https了，但有的数据包好像抓不到。"><a href="#这时候就可以看到https了，但有的数据包好像抓不到。" class="headerlink" title="这时候就可以看到https了，但有的数据包好像抓不到。"></a>这时候就可以看到https了，但有的数据包好像抓不到。</h3><p><img src="https.png" alt=""></p>
+<h2 id="这时候又看到新姿势-⑅oᴗo-۶"><a href="#这时候又看到新姿势-⑅oᴗo-۶" class="headerlink" title="这时候又看到新姿势(⑅ōᴗō)۶"></a>这时候又看到新姿势(⑅ōᴗō)۶</h2><p>用fiddler抓包转发到burp。于是又用fiddler试试</p>
+<h3 id="设置fiddler代理-转发"><a href="#设置fiddler代理-转发" class="headerlink" title="设置fiddler代理 转发"></a>设置fiddler代理 转发</h3><p><img src="fidder1.png" alt=""><br><img src="fiddler2.png" alt=""><br><img src="fiddler3.png" alt=""></p>
+<h3 id="转发"><a href="#转发" class="headerlink" title="转发"></a>转发</h3><p>fiddler默认代理是8888，这里转发到burp的8080端口<br><img src="fiddler4.png" alt=""></p>
+<h3 id="在手机上也安装fiddler的证书，设置代理是一样的"><a href="#在手机上也安装fiddler的证书，设置代理是一样的" class="headerlink" title="在手机上也安装fiddler的证书，设置代理是一样的"></a>在手机上也安装fiddler的证书，设置代理是一样的</h3><p>然后Android手机的浏览器打开：<code>http://192.168.1.220:8888</code>下载安装证书<br><img src="fdca.jpg" alt=""></p>
+<h3 id="打开burp再试试也差不多？"><a href="#打开burp再试试也差不多？" class="headerlink" title="打开burp再试试也差不多？"></a>打开burp再试试也差不多？</h3><p><img src="fdburp.png" alt=""><br>就是这个，证书的安全问题就没搞定只能忽略了<br><img src="unsafe.png" alt=""><br><a href="https://kb.cnblogs.com/page/130367/" target="_blank" rel="noopener">贴个标签：fiddler教程</a></p>
+<h2 id="这里好像还有更好的"><a href="#这里好像还有更好的" class="headerlink" title="这里好像还有更好的"></a>这里好像还有更好的</h2><p><a href="https://www.t00ls.net/articles-51070.html" target="_blank" rel="noopener">HTTPDecrypt for Android Penetration Test</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">============本文结束( ´◔ ‸◔`)感谢您的阅读============</div>
+    
+</div>
+      
+    </div>
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>W7
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2020/04/10/app%E6%95%B0%E6%8D%AE%E5%8C%85/" title="app数据包">http://yoursite.com/2020/04/10/app数据包/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Burpsuit/" rel="tag"># Burpsuit</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/26/%E5%AE%89%E8%A3%85-%E5%8D%B8%E8%BD%BDCA%E8%AF%81%E4%B9%A6/" rel="prev" title="安装/卸载CA证书">
+      <i class="fa fa-chevron-left"></i> 安装/卸载CA证书
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/04/11/web%E5%9F%BA%E7%A1%80/" rel="next" title="web基础">
+      web基础 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#手机上设置代理"><span class="nav-number">1.</span> <span class="nav-text">手机上设置代理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#电脑上也一样"><span class="nav-number">1.1.</span> <span class="nav-text">电脑上也一样</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#看到应该是可以了吧，但这时候还没导入证书"><span class="nav-number">1.2.</span> <span class="nav-text">看到应该是可以了吧，但这时候还没导入证书</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载证书并导入手机，（手机中只能导入-cer的证书。）"><span class="nav-number">1.3.</span> <span class="nav-text">下载证书并导入手机，（手机中只能导入.cer的证书。）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#这时候就可以看到https了，但有的数据包好像抓不到。"><span class="nav-number">1.4.</span> <span class="nav-text">这时候就可以看到https了，但有的数据包好像抓不到。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#这时候又看到新姿势-⑅oᴗo-۶"><span class="nav-number">2.</span> <span class="nav-text">这时候又看到新姿势(⑅ōᴗō)۶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置fiddler代理-转发"><span class="nav-number">2.1.</span> <span class="nav-text">设置fiddler代理 转发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转发"><span class="nav-number">2.2.</span> <span class="nav-text">转发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在手机上也安装fiddler的证书，设置代理是一样的"><span class="nav-number">2.3.</span> <span class="nav-text">在手机上也安装fiddler的证书，设置代理是一样的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打开burp再试试也差不多？"><span class="nav-number">2.4.</span> <span class="nav-text">打开burp再试试也差不多？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#这里好像还有更好的"><span class="nav-number">3.</span> <span class="nav-text">这里好像还有更好的</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="W7"
+      src="/images/head.jpg">
+  <p class="site-author-name" itemprop="name">W7</p>
+  <div class="site-description" itemprop="description">知识是一种乐趣，好奇是知识的萌芽</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wemaxel" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wemaxel" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:i@wqian.top" title="E-Mail → mailto:i@wqian.top" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/5529099160?is_all=1" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;5529099160?is_all&#x3D;1" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/images/weichat.jpg" title="WeChat → &#x2F;images&#x2F;weichat.jpg"><i class="fa fa-fw fa-weixin"></i></a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+      <div style="">
+  <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+</div>
+<script>
+(function(){
+
+   var digit=
+    [
+        [
+            [0,0,1,1,1,0,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,0,1,1,0],
+            [0,0,1,1,1,0,0]
+        ],//0
+        [
+            [0,0,0,1,1,0,0],
+            [0,1,1,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [1,1,1,1,1,1,1]
+        ],//1
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,1,1],
+            [1,1,1,1,1,1,1]
+        ],//2
+        [
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//3
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,0],
+            [0,0,1,1,1,1,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,1,1,0],
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,1]
+        ],//4
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,1,1,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//5
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//6
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0]
+        ],//7
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//8
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,1,1,0,0,0,0]
+        ],//9
+        [
+            [0,0,0,0,0,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,0,0,0]
+        ]//:
+    ];
+
+var canvas = document.getElementById('canvas');
+
+if(canvas.getContext){
+    var cxt = canvas.getContext('2d');
+    //声明canvas的宽高
+    var H = 100,W = 700;
+    canvas.height = H;
+    canvas.width = W;
+    cxt.fillStyle = '#f00';
+    cxt.fillRect(10,10,50,50);
+
+    //存储时间数据
+    var data = [];
+    //存储运动的小球
+    var balls = [];
+    //设置粒子半径
+    var R = canvas.height/20-1;
+    (function(){
+        var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+        //存储时间数字，由十位小时、个位小时、冒号、十位分钟、个位分钟、冒号、十位秒钟、个位秒钟这7个数字组成
+        data.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+    })();
+
+    /*生成点阵数字*/
+    function renderDigit(index,num){
+        for(var i = 0; i < digit[num].length; i++){
+            for(var j = 0; j < digit[num][i].length; j++){
+                if(digit[num][i][j] == 1){
+                    cxt.beginPath();
+                    cxt.arc(14*(R+2)*index + j*2*(R+1)+(R+1),i*2*(R+1)+(R+1),R,0,2*Math.PI);
+                    cxt.closePath();
+                    cxt.fill();
+                }
+            }
+        }
+    }
+
+    /*更新时钟*/
+    function updateDigitTime(){
+        var changeNumArray = [];
+        var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+        var NewData = [];
+        NewData.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+        for(var i = data.length-1; i >=0 ; i--){
+            //时间发生变化
+            if(NewData[i] !== data[i]){
+                //将变化的数字值和在data数组中的索引存储在changeNumArray数组中
+                changeNumArray.push(i+'_'+(Number(data[i])+1)%10);
+            }
+        }
+        //增加小球
+        for(var i = 0; i< changeNumArray.length; i++){
+            addBalls.apply(this,changeNumArray[i].split('_'));
+        }
+        data = NewData.concat();
+    }
+
+    /*更新小球状态*/
+    function updateBalls(){
+        for(var i = 0; i < balls.length; i++){
+            balls[i].stepY += balls[i].disY;
+            balls[i].x += balls[i].stepX;
+            balls[i].y += balls[i].stepY;
+            if(balls[i].x > W + R || balls[i].y > H + R){
+                balls.splice(i,1);
+                i--;
+            }
+        }
+    }
+
+    /*增加要运动的小球*/
+    function addBalls(index,num){
+        var numArray = [1,2,3];
+        var colorArray =  ["#3BE","#09C","#A6C","#93C","#9C0","#690","#FB3","#F80","#F44","#C00"];
+        for(var i = 0; i < digit[num].length; i++){
+            for(var j = 0; j < digit[num][i].length; j++){
+                if(digit[num][i][j] == 1){
+                    var ball = {
+                        x:14*(R+2)*index + j*2*(R+1)+(R+1),
+                        y:i*2*(R+1)+(R+1),
+                        stepX:Math.floor(Math.random() * 4 -2),
+                        stepY:-2*numArray[Math.floor(Math.random()*numArray.length)],
+                        color:colorArray[Math.floor(Math.random()*colorArray.length)],
+                        disY:1
+                    };
+                    balls.push(ball);
+                }
+            }
+        }
+    }
+
+    /*渲染*/
+    function render(){
+        //重置画布宽度，达到清空画布的效果
+        canvas.height = 100;
+        //渲染时钟
+        for(var i = 0; i < data.length; i++){
+            renderDigit(i,data[i]);
+        }
+        //渲染小球
+        for(var i = 0; i < balls.length; i++){
+            cxt.beginPath();
+            cxt.arc(balls[i].x,balls[i].y,R,0,2*Math.PI);
+            cxt.fillStyle = balls[i].color;
+            cxt.closePath();
+            cxt.fill();
+        }
+    }
+
+    clearInterval(oTimer);
+    var oTimer = setInterval(function(){
+        //更新时钟
+        updateDigitTime();
+        //更新小球状态
+        updateBalls();
+        //渲染
+        render();
+    },50);
+}
+
+})();
+</script>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+<span class="with-love" id="animate" style="font-size: 13px">
+  <i class="fa fa-heart"></i>
+</span>
+  <span class="author" itemprop="copyrightHolder">W7</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  <!-- 页面点击心形 -->
+<script type="text/javascript" src="/js/clicklove.js"></script>
+<script src="/live2d-widget/autoload.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","width":230,"display":"post","padding":15,"offset":10,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="搜集XML*&lt;才发现xml可能是在markdown后也被解析了，这里复制的部分xml到qq上不能用&gt;*&lt;有时间再想想怎么弄才可以吧，&gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="QQ&#x2F;XML">
+<meta property="og:url" content="http://yoursite.com/2020/03/19/QQ-XML/index.html">
+<meta property="og:site_name" content="W7">
+<meta property="og:description" content="搜集XML*&lt;才发现xml可能是在markdown后也被解析了，这里复制的部分xml到qq上不能用&gt;*&lt;有时间再想想怎么弄才可以吧，&gt;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-18T23:38:16.000Z">
+<meta property="article:modified_time" content="2020-04-13T07:50:00.439Z">
+<meta property="article:author" content="W7">
+<meta property="article:tag" content="QQ">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/03/19/QQ-XML/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>QQ/XML | W7</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">W7</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">欢迎光临本破站</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>链接</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-fw fa-calendar"></i>葵花宝典</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/19/QQ-XML/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="W7">
+      <meta itemprop="description" content="知识是一种乐趣，好奇是知识的萌芽">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="W7">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          QQ/XML
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-19 07:38:16" itemprop="dateCreated datePublished" datetime="2020-03-19T07:38:16+08:00">2020-03-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-13 15:50:00" itemprop="dateModified" datetime="2020-04-13T15:50:00+08:00">2020-04-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%95%99%E7%9D%80%E7%8E%A9%E7%9A%84/" itemprop="url" rel="index"><span itemprop="name">留着玩的</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>搜集XML<br><strong><em>*&lt;才发现xml可能是在markdown后也被解析了，这里复制的部分xml到qq上不能用&gt;</em></strong><br><strong><em>*&lt;有时间再想想怎么弄才可以吧，&gt;</em></strong></p>
+<a id="more"></a>
+<h2 id="官方"><a href="#官方" class="headerlink" title="官方"></a>官方</h2><h3 id="QQ新闻："><a href="#QQ新闻：" class="headerlink" title="QQ新闻："></a>QQ新闻：</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version='1.0' encoding='UTF-8' standalone='yes' ?&gt;</span><span class="tag">&lt;<span class="name">msg</span> <span class="attr">serviceID</span>=<span class="string">"0"</span> <span class="attr">templateID</span>=<span class="string">"1"</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">brief</span>=<span class="string">"小女孩跟妈妈逛超市发抖尿裤子 背后原因令人愤怒"</span> <span class="attr">sourceMsgId</span>=<span class="string">"0"</span> <span class="attr">url</span>=<span class="string">""</span> <span class="attr">flag</span>=<span class="string">"4"</span> <span class="attr">accostType</span>=<span class="string">"7"</span> <span class="attr">adverSign</span>=<span class="string">"0"</span> <span class="attr">multiMsgFlag</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"5"</span> <span class="attr">action</span>=<span class="string">"web"</span> <span class="attr">url</span>=<span class="string">"https://view.inews.qq.com/q/WXN20200318028391021?refer=mobileqq<span class="symbol">&amp;amp;</span>bat_id=117090663<span class="symbol">&amp;amp;</span>rg=4<span class="symbol">&amp;amp;</span>pushid=2020031867<span class="symbol">&amp;amp;</span>rate=2<span class="symbol">&amp;amp;</span>grp_id=317090669<span class="symbol">&amp;amp;</span>_wv=1<span class="symbol">&amp;amp;</span>_rp=1<span class="symbol">&amp;amp;</span>cur_pos=0<span class="symbol">&amp;amp;</span>bkt=11003<span class="symbol">&amp;amp;</span>qq=1013968603<span class="symbol">&amp;amp;</span>rs=0<span class="symbol">&amp;amp;</span>pid=2020031867<span class="symbol">&amp;amp;</span>gid=0<span class="symbol">&amp;amp;</span>tbkt=I<span class="symbol">&amp;amp;</span>big_brother_source_key=biz_src_gzh_news"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">picture</span> <span class="attr">cover</span>=<span class="string">"https://inews.gtimg.com/newsapp_ls/0/11468554322_690380/0"</span> <span class="attr">url</span>=<span class="string">"https://view.inews.qq.com/q/WXN20200318028391021?refer=mobileqq<span class="symbol">&amp;amp;</span>bat_id=117090663<span class="symbol">&amp;amp;</span>rg=4<span class="symbol">&amp;amp;</span>pushid=2020031867<span class="symbol">&amp;amp;</span>rate=2<span class="symbol">&amp;amp;</span>grp_id=317090669<span class="symbol">&amp;amp;</span>_wv=1<span class="symbol">&amp;amp;</span>_rp=1<span class="symbol">&amp;amp;</span>cur_pos=0<span class="symbol">&amp;amp;</span>bkt=11003<span class="symbol">&amp;amp;</span>qq=1013968603<span class="symbol">&amp;amp;</span>rs=0<span class="symbol">&amp;amp;</span>pid=2020031867<span class="symbol">&amp;amp;</span>gid=0<span class="symbol">&amp;amp;</span>tbkt=I<span class="symbol">&amp;amp;</span>big_brother_source_key=biz_src_gzh_news"</span> <span class="attr">w</span>=<span class="string">"0"</span> <span class="attr">h</span>=<span class="string">"0"</span> /&gt;</span><span class="tag">&lt;<span class="name">title</span>&gt;</span>小女孩跟妈妈逛超市发抖尿裤子 背后原因令人愤怒<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"0"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">hr</span> <span class="attr">hidden</span>=<span class="string">"false"</span> <span class="attr">style</span>=<span class="string">"0"</span> /&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"4"</span> <span class="attr">action</span>=<span class="string">"web"</span> <span class="attr">url</span>=<span class="string">"https://view.inews.qq.com/q/WXN20200318028395041?refer=mobileqq<span class="symbol">&amp;amp;</span>bat_id=117090663<span class="symbol">&amp;amp;</span>rg=4<span class="symbol">&amp;amp;</span>pushid=2020031867<span class="symbol">&amp;amp;</span>rate=2<span class="symbol">&amp;amp;</span>grp_id=317090669<span class="symbol">&amp;amp;</span>_wv=1<span class="symbol">&amp;amp;</span>_rp=1<span class="symbol">&amp;amp;</span>cur_pos=1<span class="symbol">&amp;amp;</span>bkt=11003<span class="symbol">&amp;amp;</span>qq=1013968603<span class="symbol">&amp;amp;</span>rs=0<span class="symbol">&amp;amp;</span>pid=2020031867<span class="symbol">&amp;amp;</span>gid=0<span class="symbol">&amp;amp;</span>tbkt=I<span class="symbol">&amp;amp;</span>big_brother_source_key=biz_src_gzh_news"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">picture</span> <span class="attr">cover</span>=<span class="string">"https://inews.gtimg.com/newsapp_ls/0/11467837116_8080/0"</span> <span class="attr">url</span>=<span class="string">"https://view.inews.qq.com/q/WXN20200318028395041?refer=mobileqq<span class="symbol">&amp;amp;</span>bat_id=117090663<span class="symbol">&amp;amp;</span>rg=4<span class="symbol">&amp;amp;</span>pushid=2020031867<span class="symbol">&amp;amp;</span>rate=2<span class="symbol">&amp;amp;</span>grp_id=317090669<span class="symbol">&amp;amp;</span>_wv=1<span class="symbol">&amp;amp;</span>_rp=1<span class="symbol">&amp;amp;</span>cur_pos=1<span class="symbol">&amp;amp;</span>bkt=11003<span class="symbol">&amp;amp;</span>qq=1013968603<span class="symbol">&amp;amp;</span>rs=0<span class="symbol">&amp;amp;</span>pid=2020031867<span class="symbol">&amp;amp;</span>gid=0<span class="symbol">&amp;amp;</span>tbkt=I<span class="symbol">&amp;amp;</span>big_brother_source_key=biz_src_gzh_news"</span> <span class="attr">w</span>=<span class="string">"0"</span> <span class="attr">h</span>=<span class="string">"0"</span> /&gt;</span><span class="tag">&lt;<span class="name">title</span>&gt;</span>陕西国家紧急医学救援队撤离 房间内一幕看哭众人(视频)<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"0"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">hr</span> <span class="attr">hidden</span>=<span class="string">"false"</span> <span class="attr">style</span>=<span class="string">"0"</span> /&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"4"</span> <span class="attr">action</span>=<span class="string">"web"</span> <span class="attr">url</span>=<span class="string">"https://view.inews.qq.com/q/WXN20200318028400031?refer=mobileqq<span class="symbol">&amp;amp;</span>bat_id=117090663<span class="symbol">&amp;amp;</span>rg=4<span class="symbol">&amp;amp;</span>pushid=2020031867<span class="symbol">&amp;amp;</span>rate=2<span class="symbol">&amp;amp;</span>grp_id=317090669<span class="symbol">&amp;amp;</span>_wv=1<span class="symbol">&amp;amp;</span>_rp=1<span class="symbol">&amp;amp;</span>cur_pos=2<span class="symbol">&amp;amp;</span>bkt=11003<span class="symbol">&amp;amp;</span>qq=1013968603<span class="symbol">&amp;amp;</span>rs=0<span class="symbol">&amp;amp;</span>pid=2020031867<span class="symbol">&amp;amp;</span>gid=0<span class="symbol">&amp;amp;</span>tbkt=I<span class="symbol">&amp;amp;</span>big_brother_source_key=biz_src_gzh_news"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">picture</span> <span class="attr">cover</span>=<span class="string">"https://inews.gtimg.com/newsapp_ls/0/11467838914_8080/0"</span> <span class="attr">url</span>=<span class="string">"https://view.inews.qq.com/q/WXN20200318028400031?refer=mobileqq<span class="symbol">&amp;amp;</span>bat_id=117090663<span class="symbol">&amp;amp;</span>rg=4<span class="symbol">&amp;amp;</span>pushid=2020031867<span class="symbol">&amp;amp;</span>rate=2<span class="symbol">&amp;amp;</span>grp_id=317090669<span class="symbol">&amp;amp;</span>_wv=1<span class="symbol">&amp;amp;</span>_rp=1<span class="symbol">&amp;amp;</span>cur_pos=2<span class="symbol">&amp;amp;</span>bkt=11003<span class="symbol">&amp;amp;</span>qq=1013968603<span class="symbol">&amp;amp;</span>rs=0<span class="symbol">&amp;amp;</span>pid=2020031867<span class="symbol">&amp;amp;</span>gid=0<span class="symbol">&amp;amp;</span>tbkt=I<span class="symbol">&amp;amp;</span>big_brother_source_key=biz_src_gzh_news"</span> <span class="attr">w</span>=<span class="string">"0"</span> <span class="attr">h</span>=<span class="string">"0"</span> /&gt;</span><span class="tag">&lt;<span class="name">title</span>&gt;</span>女子开保时捷被拦神态异常 民警一查揪出意外秘密(现场)<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"0"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">hr</span> <span class="attr">hidden</span>=<span class="string">"false"</span> <span class="attr">style</span>=<span class="string">"0"</span> /&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"4"</span> <span class="attr">action</span>=<span class="string">"web"</span> <span class="attr">url</span>=<span class="string">"https://view.inews.qq.com/q/WXN20200318028404031?refer=mobileqq<span class="symbol">&amp;amp;</span>bat_id=117090663<span class="symbol">&amp;amp;</span>rg=4<span class="symbol">&amp;amp;</span>pushid=2020031867<span class="symbol">&amp;amp;</span>rate=2<span class="symbol">&amp;amp;</span>grp_id=317090669<span class="symbol">&amp;amp;</span>_wv=1<span class="symbol">&amp;amp;</span>_rp=1<span class="symbol">&amp;amp;</span>cur_pos=3<span class="symbol">&amp;amp;</span>bkt=11003<span class="symbol">&amp;amp;</span>qq=1013968603<span class="symbol">&amp;amp;</span>rs=0<span class="symbol">&amp;amp;</span>pid=2020031867<span class="symbol">&amp;amp;</span>gid=0<span class="symbol">&amp;amp;</span>tbkt=I<span class="symbol">&amp;amp;</span>big_brother_source_key=biz_src_gzh_news"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">picture</span> <span class="attr">cover</span>=<span class="string">"https://inews.gtimg.com/newsapp_ls/0/11467840477_8080/0"</span> <span class="attr">url</span>=<span class="string">"https://view.inews.qq.com/q/WXN20200318028404031?refer=mobileqq<span class="symbol">&amp;amp;</span>bat_id=117090663<span class="symbol">&amp;amp;</span>rg=4<span class="symbol">&amp;amp;</span>pushid=2020031867<span class="symbol">&amp;amp;</span>rate=2<span class="symbol">&amp;amp;</span>grp_id=317090669<span class="symbol">&amp;amp;</span>_wv=1<span class="symbol">&amp;amp;</span>_rp=1<span class="symbol">&amp;amp;</span>cur_pos=3<span class="symbol">&amp;amp;</span>bkt=11003<span class="symbol">&amp;amp;</span>qq=1013968603<span class="symbol">&amp;amp;</span>rs=0<span class="symbol">&amp;amp;</span>pid=2020031867<span class="symbol">&amp;amp;</span>gid=0<span class="symbol">&amp;amp;</span>tbkt=I<span class="symbol">&amp;amp;</span>big_brother_source_key=biz_src_gzh_news"</span> <span class="attr">w</span>=<span class="string">"0"</span> <span class="attr">h</span>=<span class="string">"0"</span> /&gt;</span><span class="tag">&lt;<span class="name">title</span>&gt;</span>男子派出所内崩溃大哭还猛扇自己耳光 真相曝光网友直呼心疼<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">source</span> <span class="attr">name</span>=<span class="string">""</span> <span class="attr">icon</span>=<span class="string">""</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">appid</span>=<span class="string">"0"</span> /&gt;</span><span class="tag">&lt;/<span class="name">msg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="天气：卡片-gt-gt-gt"><a href="#天气：卡片-gt-gt-gt" class="headerlink" title="天气：卡片&gt;&gt;&gt;"></a>天气：卡片&gt;&gt;&gt;</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;"app":"com.tencent.weather","desc":"","view":"WeatherThreeView","ver":"1.0.0.106","prompt":"【安顺-镇宁】阴 9°\/16°, 09:19更新~","appID":"","sourceName":"","actionData":"","actionData_A":"","sourceUrl":"","meta":&#123;"weather":&#123;"ad":[&#123;"icon":"http:\/\/imgcache.qq.com\/ac\/tq\/xz2\/sy.jpg","p":"ptype=star","t":"2","title":"星座 | 今天你的综合运势还可以，但对自己对他人都显得不够上心，...","url":""&#125;,&#123;"icon":"http:\/\/imgcache.qq.com\/ac\/qqweather\/image\/2020\/3\/13.png","p":"ptype=lunar","t":"4","title":"黄历 | 农历二月二十。宜祭祀.会亲友.立券.交易.裁衣.合帐....","url":""&#125;],"info":&#123;"it1":&#123;"adcode":"101260303","city":"安顺-镇宁","hour":"9","max":"16","min":"9","temp":"12","type":"203","ut":"1584062347","wea":"阴"&#125;,"it2":&#123;"hour":"10","temp":"12","type":"203"&#125;,"it3":&#123;"hour":"11","temp":"12","type":"202"&#125;,"ts":"1584062800"&#125;,"url":""&#125;&#125;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="天气：链接-gt-gt-gt"><a href="#天气：链接-gt-gt-gt" class="headerlink" title="天气：链接&gt;&gt;&gt;"></a>天气：链接&gt;&gt;&gt;</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version='1.0' encoding='UTF-8' standalone='yes' ?&gt;</span><span class="tag">&lt;<span class="name">msg</span> <span class="attr">serviceID</span>=<span class="string">"146"</span> <span class="attr">templateID</span>=<span class="string">"1"</span> <span class="attr">action</span>=<span class="string">"web"</span> <span class="attr">brief</span>=<span class="string">"[分享] 成都 晴 "</span> <span class="attr">sourcePublicUin</span>=<span class="string">"2658655094"</span> <span class="attr">sourceMsgId</span>=<span class="string">"0"</span> <span class="attr">url</span>=<span class="string">"https://weather.mp.qq.com/?city=%E6%88%90%E9%83%BD<span class="symbol">&amp;amp;</span>areaid=510100<span class="symbol">&amp;amp;</span>st=0<span class="symbol">&amp;amp;</span>_wv=1"</span> <span class="attr">flag</span>=<span class="string">"0"</span> <span class="attr">adverSign</span>=<span class="string">"0"</span> <span class="attr">multiMsgFlag</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"2"</span>&gt;</span><span class="tag">&lt;<span class="name">picture</span> <span class="attr">cover</span>=<span class="string">"https://imgcache.qq.com/ac/qqweather/image/share_icon/sun.png"</span> <span class="attr">w</span>=<span class="string">"0"</span> <span class="attr">h</span>=<span class="string">"0"</span> /&gt;</span><span class="tag">&lt;<span class="name">title</span>&gt;</span>成都 晴 <span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;<span class="name">summary</span>&gt;</span>12°/25°</span><br><span class="line">空气质量:良<span class="tag">&lt;/<span class="name">summary</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">source</span> <span class="attr">name</span>=<span class="string">"QQ天气"</span> <span class="attr">icon</span>=<span class="string">"http://url.cn/JS8oE7"</span> <span class="attr">action</span>=<span class="string">"plugin"</span> <span class="attr">a_actionData</span>=<span class="string">"mqqapi://app/action?pkg=com.tencent.mobileqq<span class="symbol">&amp;amp;</span>cmp=com.tencent.biz.pubaccount.AccountDetailActivity<span class="symbol">&amp;amp;</span>uin=2658655094"</span> <span class="attr">i_actionData</span>=<span class="string">"mqqapi://card/show_pslcard?src_type=internal<span class="symbol">&amp;amp;</span>card_type=public_account<span class="symbol">&amp;amp;</span>uin=2658655094<span class="symbol">&amp;amp;</span>version=1"</span> <span class="attr">appid</span>=<span class="string">"-1"</span> /&gt;</span><span class="tag">&lt;/<span class="name">msg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="QQ团队-登陆成功-gt-gt-gt"><a href="#QQ团队-登陆成功-gt-gt-gt" class="headerlink" title="QQ团队:登陆成功&gt;&gt;&gt;"></a>QQ团队:登陆成功&gt;&gt;&gt;</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version='1.0' encoding='UTF-8' standalone='yes' ?&gt;</span><span class="tag">&lt;<span class="name">msg</span> <span class="attr">serviceID</span>=<span class="string">"0"</span> <span class="attr">templateID</span>=<span class="string">"1"</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">brief</span>=<span class="string">"登录操作通知"</span> <span class="attr">sourceMsgId</span>=<span class="string">"1584464835506623"</span> <span class="attr">url</span>=<span class="string">""</span> <span class="attr">flag</span>=<span class="string">"37"</span> <span class="attr">sType</span>=<span class="string">"1"</span> <span class="attr">accostType</span>=<span class="string">"7"</span> <span class="attr">adverSign</span>=<span class="string">"0"</span> <span class="attr">multiMsgFlag</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"0"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">title</span> <span class="attr">style</span>=<span class="string">"1"</span>&gt;</span>登录操作通知<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"0"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">summary</span> <span class="attr">type</span>=<span class="string">"1"</span>&gt;</span>2020年03月18日<span class="tag">&lt;/<span class="name">summary</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"6"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">summary</span>&gt;</span>w7<span class="tag">&lt;/<span class="name">summary</span>&gt;</span><span class="tag">&lt;<span class="name">summary</span>&gt;</span>登录帐号：2754457373</span><br><span class="line">登录应用：weiyun.com</span><br><span class="line">登录时间：2020-03-18 01:07:15<span class="tag">&lt;/<span class="name">summary</span>&gt;</span><span class="tag">&lt;<span class="name">summary</span>&gt;</span>如有疑问，请登录aq.qq.com进行查询。<span class="tag">&lt;/<span class="name">summary</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"0"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">hr</span> <span class="attr">hidden</span>=<span class="string">"false"</span> <span class="attr">style</span>=<span class="string">"0"</span> /&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"0"</span> <span class="attr">action</span>=<span class="string">"web"</span> <span class="attr">url</span>=<span class="string">"https://aq.qq.com/cn2/message_center/wireless/mobile_mc_login_index"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">title</span>&gt;</span>查看详情<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">source</span> <span class="attr">name</span>=<span class="string">""</span> <span class="attr">icon</span>=<span class="string">""</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">appid</span>=<span class="string">"0"</span> /&gt;</span><span class="tag">&lt;/<span class="name">msg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="QQ团队-阅读全文-gt-gt-gt"><a href="#QQ团队-阅读全文-gt-gt-gt" class="headerlink" title="QQ团队:阅读全文&gt;&gt;&gt;"></a>QQ团队:阅读全文&gt;&gt;&gt;</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version='1.0' encoding='UTF-8' standalone='yes' ?&gt;</span><span class="tag">&lt;<span class="name">msg</span> <span class="attr">serviceID</span>=<span class="string">"0"</span> <span class="attr">templateID</span>=<span class="string">"1"</span> <span class="attr">action</span>=<span class="string">"web"</span> <span class="attr">brief</span>=<span class="string">"用了这个神仙工具，效率高得惊人"</span> <span class="attr">sourceMsgId</span>=<span class="string">"0"</span> <span class="attr">url</span>=<span class="string">"mqqapi://microapp/open?url=https%3A%2F%2Fm.q.qq.com%2Fa%2Fp%2F1110238708%3Fscene%3D1023"</span> <span class="attr">flag</span>=<span class="string">"37"</span> <span class="attr">accostType</span>=<span class="string">"7"</span> <span class="attr">adverSign</span>=<span class="string">"0"</span> <span class="attr">multiMsgFlag</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"6"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">title</span>&gt;</span>用了这个神仙工具，效率高得惊人<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;<span class="name">picture</span> <span class="attr">cover</span>=<span class="string">"https://tianshu.gtimg.cn/tianshu/1583512658507.jpg"</span> <span class="attr">w</span>=<span class="string">"0"</span> <span class="attr">h</span>=<span class="string">"0"</span> /&gt;</span><span class="tag">&lt;<span class="name">summary</span>&gt;</span>腾讯文档免费模板，助力高效办公<span class="tag">&lt;/<span class="name">summary</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"0"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">hr</span> <span class="attr">hidden</span>=<span class="string">"false"</span> <span class="attr">style</span>=<span class="string">"0"</span> /&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"0"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">title</span>&gt;</span>阅读全文<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">source</span> <span class="attr">name</span>=<span class="string">""</span> <span class="attr">icon</span>=<span class="string">""</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">appid</span>=<span class="string">"0"</span> /&gt;</span><span class="tag">&lt;/<span class="name">msg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="小程序-gt-gt-gt"><a href="#小程序-gt-gt-gt" class="headerlink" title="小程序&gt;&gt;&gt;"></a>小程序&gt;&gt;&gt;</h3><p>欢乐斗地主</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;"app":"com.tencent.miniapp_01","desc":"","view":"view_8C8E89B49BE609866298ADDFF2DBABA4","ver":"1.0.0.19","prompt":"[QQ小程序]欢乐斗地主","appID":"","sourceName":"","actionData":"","actionData_A":"","sourceUrl":"","meta":&#123;"detail_1":&#123;"appid":"363","title":"欢乐斗地主","desc":"出行路上没事干？一起来斗地主！","icon":"miniapp.gtimg.cn\/public\/appicon\/4a5967410b9f70f4c34cecea5d7964cd_200.jpg","preview":"hlddz.huanle.qq.com\/logos\/200201gongjiao.png","url":"m.q.qq.com\/a\/s\/50d9d748e400b0ac92a42cc9fb173a9a","scene":0,"host":&#123;"uin":2473671082,"nick":"。空。"&#125;,"shareTemplateId":"8C8E89B49BE609866298ADDFF2DBABA4","shareTemplateData":&#123;&#125;&#125;&#125;,"config":&#123;"type":"normal","width":0,"height":0,"forward":0,"autoSize":0&#125;,"text":"","sourceAd":""&#125;</span><br></pre></td></tr></table></figure>
+<p>天天斗地主</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;"app":"com.tencent.miniapp_01","desc":"","view":"view_8C8E89B49BE609866298ADDFF2DBABA4","ver":"1.0.0.19","prompt":"[QQ小程序]天天斗地主真人版","appID":"","sourceName":"","actionData":"","actionData_A":"","sourceUrl":"","meta":&#123;"detail_1":&#123;"appid":"1108806145","title":"天天斗地主真人版","desc":"老铁，就差你了，赶紧加入我们吧！","icon":"miniapp.gtimg.cn\/public\/appicon\/b04829176cce4582f765296e57c1729b_200.jpg","preview":"qqadapt.qpic.cn\/adapt\/0\/65365cd7-0a17-31ac-4e45-836e196973fa\/0?pt=0&amp;ek=1&amp;kp=1&amp;sce=70-0-0","url":"m.q.qq.com\/a\/s\/8edcc8ee9d3cd3689a478e0b170d2ecd","scene":0,"host":&#123;"uin":517065473,"nick":"好先森"&#125;,"shareTemplateId":"8C8E89B49BE609866298ADDFF2DBABA4","shareTemplateData":&#123;&#125;&#125;&#125;,"config":&#123;"type":"normal","width":0,"height":0,"forward":1,"autoSize":0&#125;,"text":"","sourceAd":""&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="礼物"><a href="#礼物" class="headerlink" title="礼物"></a>礼物</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;"app":"com.tencent.gxhServiceIntelligentTip","desc":"送你一封小情书","view":"gxhServiceIntelligentTip","ver":"","prompt":"送你一封小情书","appID":"","sourceName":"","actionData":"","actionData_A":"","sourceUrl":"","meta":&#123;"gxhServiceIntelligentTip":&#123;"appid":"gxhServiceIntelligentTip","bgImg":"http:\/\/qzonestyle.gtimg.cn\/qzone\/qzactStatics\/imgs\/20200206164237_ed5a6d.png","action":"https:\/\/zb.vip.qq.com\/v2\/2020LoverDayIndex?_wv=16778243&amp;uniqueSeq=1581610330756826788&amp;ADTAG=notice","reportParams":&#123;&#125;&#125;&#125;,"config":&#123;"forward":"1","type":"normal"&#125;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p>微信分享</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;"app":"com.tencent.structmsg","desc":"新闻","view":"news","ver":"0.0.0.1","prompt":"[分享]高校战“疫”网络安全分享赛 WP","appID":"","sourceName":"","actionData":"","actionData_A":"","sourceUrl":"","meta":&#123;"news":&#123;"action":"","android_pkg_name":"","app_type":1,"appid":1103188687,"desc":"高校战“疫”网络安全分享赛 WP","jumpUrl":"http:\/\/url.cn\/5FOAyuC","preview":"http:\/\/url.cn\/5NasJjF","source_icon":"","source_url":"","tag":"微信","title":"高校战“疫”网络安全分享赛 WP"&#125;&#125;,"config":&#123;"autosize":true,"ctime":1583814058,"forward":true,"token":"95bc02de5e33fedac702857cd2c0557e","type":"normal"&#125;,"text":"","sourceAd":""&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="自定义-gt-gt-gt"><a href="#自定义-gt-gt-gt" class="headerlink" title="自定义&gt;&gt;&gt;"></a>自定义&gt;&gt;&gt;</h2><h3 id="红包-gt-gt-gt"><a href="#红包-gt-gt-gt" class="headerlink" title="红包&gt;&gt;&gt;"></a>红包&gt;&gt;&gt;</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;"app":"com.tencent.cmshow","desc":"","view":"game_redpacket","ver":"1.0.3.5","prompt":"","appID":"","sourceName":"","actionData":"","actionData_A":"","sourceUrl":"","meta":&#123;"redPacket":&#123;"msg":"QQ红包","posterUrl":"\/xydata\/cmshow\/gameRedPacket\/2749\/bde0aed576c524d0544a079df0d36a30.png","destUrl":"https：//baidu.com"&#125;&#125;,"config":&#123;"forward":1&#125;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="官方推荐"><a href="#官方推荐" class="headerlink" title="官方推荐"></a>官方推荐</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version='1.0' encoding='UTF-8' standalone='yes' ?&gt;</span><span class="tag">&lt;<span class="name">msg</span> <span class="attr">serviceID</span>=<span class="string">"1"</span> <span class="attr">templateID</span>=<span class="string">"1"</span> <span class="attr">action</span>=<span class="string">"plugin"</span> <span class="attr">actionData</span>=<span class="string">"AppCmd://OpenContactInfo/?uin=2754457373 "</span> <span class="attr">a_actionData</span>=<span class="string">"mqqapi://card/show_pslcard?src_type=internal<span class="symbol">&amp;amp;</span>source=sharecard<span class="symbol">&amp;amp;</span>version=1<span class="symbol">&amp;amp;</span>uin=2754457373"</span> <span class="attr">i_actionData</span>=<span class="string">"mqqapi://card/show_pslcard?src_type=internal<span class="symbol">&amp;amp;</span>source=sharecard<span class="symbol">&amp;amp;</span>version=1<span class="symbol">&amp;amp;</span>uin=2754457373"</span> <span class="attr">brief</span>=<span class="string">"在吗？"</span> <span class="attr">sourceMsgId</span>=<span class="string">"0"</span> <span class="attr">url</span>=<span class="string">""</span> <span class="attr">flag</span>=<span class="string">"2"</span> <span class="attr">adverSign</span>=<span class="string">"0"</span> <span class="attr">multiMsgFlag</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"0"</span> <span class="attr">mode</span>=<span class="string">"1"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">summary</span>&gt;</span> 腾讯官方特别推荐<span class="tag">&lt;/<span class="name">summary</span>&gt;</span><span class="tag">&lt;<span class="name">hr</span> <span class="attr">hidden</span>=<span class="string">"false"</span> <span class="attr">style</span>=<span class="string">"0"</span> /&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"2"</span> <span class="attr">mode</span>=<span class="string">"1"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">picture</span> <span class="attr">cover</span>=<span class="string">"mqqapi://card/show_pslcard?src_type=internal<span class="symbol">&amp;amp;</span>source=sharecard<span class="symbol">&amp;amp;</span>version=1<span class="symbol">&amp;amp;</span>uin=2754457373"</span> <span class="attr">w</span>=<span class="string">"0"</span> <span class="attr">h</span>=<span class="string">"0"</span> /&gt;</span><span class="tag">&lt;<span class="name">title</span> <span class="attr">color</span>=<span class="string">"#00DB00"</span>&gt;</span>⁣<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;<span class="name">summary</span> <span class="attr">color</span>=<span class="string">"#FF0000"</span>&gt;</span>恋爱最佳人选<span class="tag">&lt;/<span class="name">summary</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">source</span> <span class="attr">name</span>=<span class="string">"官方认证"</span> <span class="attr">icon</span>=<span class="string">"https://qzs.qq.com/ac/qzone_v5/client/auth_icon.png?_tcvassp_0_=640shp"</span> <span class="attr">action</span>=<span class="string">"web"</span> <span class="attr">appid</span>=<span class="string">"-1"</span> /&gt;</span><span class="tag">&lt;/<span class="name">msg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Pic-1"><a href="#Pic-1" class="headerlink" title="Pic 1"></a>Pic 1</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version='1.0' encoding='UTF-8' standalone='yes' ?&gt;</span><span class="tag">&lt;<span class="name">msg</span> <span class="attr">serviceID</span>=<span class="string">"76"</span> <span class="attr">templateID</span>=<span class="string">"1"</span> <span class="attr">action</span>=<span class="string">"plugin"</span> <span class="attr">actionData</span>=<span class="string">"                                                                                                                                                                                                                                                                                                                                                                                            各位复读机， ͆响复 ̾̉̎̎ͩ̔̅̉҉̡. ̴̡ͮ̽读不然会像我这种复读不清楚 各̯͓̥ͭͥͩ̽͗̑̇̎ͩ̀͢位̛̍͒̀͌ͯ͌͋̎̉̎̚̚҉̵͏̵̨̝̪͎̪̤̺̣̺͈̘̻̦̱̯̙̜̯̫͈͇̭̺̟͓̘̓ͤͤͣ̄̄̈́ͧ̽̂̀̚͞ͅ读̸̜̠̭͍͙ͩ̀ͣ͆̍̈͒̉̌̉̂͛̓͜͠͠机̪͓̥̪͊̎̆̎̃͆̈́́̚，̵̸͓̣̣̳̭͓̞͎̍ͤ͊ͯͮ̓͑͌̈́̄̒̑͌ͪ̀̀̚̕ͅͅ天̶̛̯͙͚͖̝͔̱̣̼̲͍̮̳̎ͦ͛̿͑͗̏ͧ̍͛̓̾̈́ͧ͊ͧ̄气ͮͤͩͬ̆͏̧̺̠̺̗̼͔̞̻̥̗̬̱̦͓̥̺̗̩̩̂̏͌ͯͧ̿́͑̅ͯ̕͟͠͝ͅ渐̵̖̗̟͉̦̐̊ͬ̉́̐̃͘变̵̙̳̙̜ͬ̈̀̊̃̿̈́̋̈͋̈́͆ͪͫ̂̽͊̃͡得̡͇̙̜̖̠̻̱̣͊̐̊͊̏ͦ̈́̒͆ͫ̑͛͐ͤͬ̽ͩ͢͢ͅͅ寒̶̝͎̯ͫ̓̍̓ͧ͆ͩ͗ͤ̚泠̨͖̯̮̼̖̪̦̲̖͉̹̟̥̟͖̔̽͑̒̿͐͌̋͗͛͋̿̄̏̕͜͝。̜͈̖̗̖̐͛͆̂̈̿́ͫ͠请̵̢͔̘͕̲͖͈͖̯̠̗̤̗̪̝̩̘͑̌̌ͦ͗ͩ͗̈́͆ͨ̓ͥ̓ͫͪ́̄̂̈́ͪ͌̂̈́͑̉̾͗ͥ̾ͬ̚͞͞ͅ ̴̯̲͈͙̖̫͚̯̲̂̉̉ͭͬ̉͊̀ͫ̄̚͘͢ ̸̛̮̦͖͇͕͓͇̖̯̳̻͍̠̪͍̖̒̊ͪ̇͑̆ͯ͛̇ͪͨ̌̒ͨ͌͗̈̃ ̵̟̟̖̯͕̙̭̙̗̼̤͈͚̪͈̺̲͓ͬͧͫ̓ͩ̂̽̀ͪͨ̄͑͐̅̉͟͝家̴̰̘͉͓̺̠̪̙̜͔̲͎͎͓̼̆͗ͮͥ͂̓ͬ͑̄̊́͡.̵͖̗̘̼͙̼̰̤͖͓ͭ̽͒̍̆̓́͛̎̍ͪ͒ͥͮ̉ͭͭ̚ͅ ͚͓̻̰̺̍̍ͭͦ̃̈̎̉̀̓̕ ̧̹͍͎̑̂ͮͩ́注͒̉͌͗͒ͬͤ͂̌ͧ̏ͬ̇̅͑͜҉̟̝͈̬͇̝͇̦̤̹̤͎̪̭̟̳̱ͯ̃̏̆̎ͥ͜͠ ̤͎̝̝̭̻̮̏͑ͤ͌̏̿̈́͑̓̒̌̌͑̿̽̄͐͐͞ͅͅ.̨͗̑ͭ͏̢͇͔̤̟͍̲͕͓ͅ ̡͖̦͍̖͇̞̤͕̞̟͔̙̺͈̥͓̰̬̓̍̿̇͗保̡̹̙͖̰̦̬̼̣̻̦̤̓͗ͪ̄ͪͨ̓͌ͫ͋́͢暖̨̛͎̼̟̌̾ͧ͐͊͢，̴̸̶̮̗̙̥̦̘̫̞͍̩̪̼̣̞̺̄̉̌ͬͣ̄͛̈̾̋̌̏̌̊͞以͖̲̱̱̮̥̫̘̰̜̫̪̩͔̬̃ͤ̎̾̒͋̈́̀͝ͅ免各位复读机，天气逐渐变得寒冷。请大家注意保暖，以免线路老化，影响复读。 各位复读机，天气逐渐变得寒冷。请大̧̧̓̓̐ ͆ͩ ̍ ̾̉̎̎ͩ家̔̅̉҉̡. ̴̡ͮ̽̐ ̷̉. ̴̡ͮ̽读不然会像我这种复读不清楚 各̯͓̥ͭͥͩ̽͗̑̇̎ͩ̀͢位̛̍͒̀͌ͯ͌͋̎̉̎̚̚҉̵͏̵̨̝̪͎̪̤̺̣̺͈̘̻̦̱̯̙̜̯̫͈͇̭̺̟͓̘̓ͤͤͣ̄̄̈́ͧ̽̂̀̚͞ͅ读̸̜̠̭͍͙ͩ̀ͣ͆̍̈͒̉̌̉̂͛̓͜͠͠机̪͓̥̪͊̎̆̎̃͆̈́́̚，̵̸͓̣̣̳̭͓̞͎̍ͤ͊ͯͮ̓͑͌̈́̄̒̑͌ͪ̀̀̚̕ͅͅ天̶̛̯͙͚͖̝͔̱̣̼̲͍̮̳̎ͦ͛̿͑͗̏ͧ̍͛̓̾̈́ͧ͊ͧ̄气ͮͤͩͬ̆͏̧̺̠̺̗̼͔̞̻̥̗̬̱̦͓̥̺̗̩̩̂̏͌ͯͧ̿́͑̅ͯ̕͟͠͝ͅ渐̵̖̗̟͉̦̐̊ͬ̉́̐̃͘变̵̙̳̙̜ͬ̈̀̊̃̿̈́̋̈͋̈́͆ͪͫ̂̽͊̃͡得̡͇̙̜̖̠̻̱̣͊̐̊͊̏ͦ̈́̒͆ͫ̑͛͐ͤͬ̽ͩ͢͢ͅͅ寒̶̝͎̯ͫ̓̍̓ͧ͆ͩ͗ͤ̚泠̨͖̯̮̼̖̪̦̲̖͉̹̟̥̟͖̔̽͑̒̿͐͌̋͗͛͋̿̄̏̕͜͝。̜͈̖̗̖̐͛͆̂̈̿́ͫ͠请̵̢͔̘͕̲͖͈͖̯̠̗̤̗̪̝̩̘͑̌̌ͦ͗ͩ͗̈́͆ͨ̓ͥ̓ͫͪ́̄̂̈́ͪ͌̂̈́͑̉̾͗ͥ̾ͬ̚͞͞ͅ ̴̯̲͈͙̖̫͚̯̲̂̉̉ͭͬ̉͊̀ͫ̄̚͘͢ ̸̛̮̦͖͇͕͓͇̖̯̳̻͍̠̪͍̖̒̊ͪ̇͑̆ͯ͛̇ͪͨ̌̒ͨ͌͗̈̃ ̵̟̟̖̯͕̙̭̙̗̼̤͈͚̪͈̺̲͓ͬͧͫ̓ͩ̂̽̀ͪͨ̄͑͐̅̉͟͝家̴̰̘͉͓̺̠̪̙̜͔̲͎͎͓̼̆͗ͮͥ͂̓ͬ͑̄̊́͡.̵͖̗̘̼͙̼̰̤͖͓ͭ̽͒̍̆̓́͛̎̍ͪ͒ͥͮ̉ͭͭ̚ͅ ͚͓̻̰̺̍̍ͭͦ̃̈̎̉̀̓̕ ̧̹͍͎̑̂ͮͩ́注͒̉͌͗͒ͬͤ͂̌ͧ̏ͬ̇̅͑͜҉̟̝͈̬͇̝͇̦̤̹̤͎̪̭̟̳̱ͯ̃̏̆̎ͥ͜͠ ̤͎̝̝̭̻̮̏͑ͤ͌̏̿̈́͑̓̒̌̌͑̿̽̄͐͐͞ͅͅ.̨͗̑ͭ͏̢͇͔̤̟͍̲͕͓ͅ ̡͖̦͍̖͇̞̤͕̞̟͔̙̺͈̥͓̰̬̓̍̿̇͗保̡̹̙͖̰̦̬̼̣̻̦̤̓͗ͪ̄ͪͨ̓͌ͫ͋́͢暖̨̛͎̼̟̌̾ͧ͐͊͢"</span> <span class="attr">a_actionData</span>=<span class="string">"mqqapi://card/show_pslcard?src_type=internal<span class="symbol">&amp;amp;</span>source=sharecard<span class="symbol">&amp;amp;</span>version=1<span class="symbol">&amp;amp;</span>uin=1692634246"</span> <span class="attr">brief</span>=<span class="string">"您有新的消息"</span> <span class="attr">sourcePublicUin</span>=<span class="string">"3043786528"</span> <span class="attr">sourceMsgId</span>=<span class="string">"1564738903051667"</span> <span class="attr">url</span>=<span class="string">"https://post.mp.qq.com/group/article/32363631363339303136-550394632.html?<span class="symbol">&amp;amp;</span>_wv=2147483777<span class="symbol">&amp;amp;</span>article_id=550394632<span class="symbol">&amp;amp;</span>time=1564738800<span class="symbol">&amp;amp;</span>sig=2ddfb161b623012c2a97556283aae6e5"</span> <span class="attr">flag</span>=<span class="string">"37"</span> <span class="attr">sType</span>=<span class="string">"1"</span> <span class="attr">adverSign</span>=<span class="string">"0"</span> <span class="attr">multiMsgFlag</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"6"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">title</span> <span class="attr">size</span>=<span class="string">"65"</span>&gt;</span>♡来自**对你的表白♡<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;<span class="name">summary</span> <span class="attr">type</span>=<span class="string">"1"</span>&gt;</span>5月21日5:20<span class="tag">&lt;/<span class="name">summary</span>&gt;</span><span class="tag">&lt;<span class="name">picture</span> <span class="attr">cover</span>=<span class="string">"http://gchat.qpic.cn/gchatpic_new/2641296238/735524882-3219132080-0B411A2AD75E45D611EBCC3A76BD4A0D/0"</span> <span class="attr">w</span>=<span class="string">"0"</span> <span class="attr">h</span>=<span class="string">"0"</span> /&gt;</span><span class="tag">&lt;<span class="name">picture</span> <span class="attr">cover</span>=<span class="string">"http://gchat.qpic.cn/gchatpic_new/2641296238/735524882-3219132080-95C47227C79C2CB305B571E31F43C618/0"</span> <span class="attr">w</span>=<span class="string">"0"</span> <span class="attr">h</span>=<span class="string">"0"</span> /&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"0"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">hr</span> <span class="attr">hidden</span>=<span class="string">"false"</span> <span class="attr">style</span>=<span class="string">"0"</span> /&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"0"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">title</span>&gt;</span>世界上的人那么多，为什么偏偏认识了你。认识的人那么多，为什么偏偏思念着你。只要想着你，心就甜如蜜！<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"0"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">hr</span> <span class="attr">hidden</span>=<span class="string">"false"</span> <span class="attr">style</span>=<span class="string">"0"</span> /&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"0"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">title</span>&gt;</span>我会在每个有意义的时辰，远隔山海与你共存。<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"0"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">hr</span> <span class="attr">hidden</span>=<span class="string">"false"</span> <span class="attr">style</span>=<span class="string">"0"</span> /&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"0"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">title</span>&gt;</span>遇到你之前世界是荒原；遇到你之后世界是乐园；过去的岁月，对我像一缕轻烟，未来的生涯，因你而幸福无边。<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">source</span> <span class="attr">name</span>=<span class="string">"点击这里直达"</span> <span class="attr">icon</span>=<span class="string">"http://t.cn/RVIeaZK"</span> <span class="attr">url</span>=<span class="string">"https://baidu.com"</span> <span class="attr">action</span>=<span class="string">"web"</span> <span class="attr">appid</span>=<span class="string">"-1"</span> /&gt;</span><span class="tag">&lt;/<span class="name">msg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Pic2</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version='1.0' encoding='UTF-8' standalone='yes' ?&gt;</span><span class="tag">&lt;<span class="name">msg</span> <span class="attr">serviceID</span>=<span class="string">"76"</span> <span class="attr">templateID</span>=<span class="string">"1"</span> <span class="attr">action</span>=<span class="string">"plugin"</span> <span class="attr">actionData</span>=<span class="string">"                                                                                                                                                                                                                                                                                                                                                                                            各位复读机， ͆响复 ̾̉̎̎ͩ̔̅̉҉̡. ̴̡ͮ̽读不然会像我这种复读不清楚 各̯͓̥ͭͥͩ̽͗̑̇̎ͩ̀͢位̛̍͒̀͌ͯ͌͋̎̉̎̚̚҉̵͏̵̨̝̪͎̪̤̺̣̺͈̘̻̦̱̯̙̜̯̫͈͇̭̺̟͓̘̓ͤͤͣ̄̄̈́ͧ̽̂̀̚͞ͅ读̸̜̠̭͍͙ͩ̀ͣ͆̍̈͒̉̌̉̂͛̓͜͠͠机̪͓̥̪͊̎̆̎̃͆̈́́̚，̵̸͓̣̣̳̭͓̞͎̍ͤ͊ͯͮ̓͑͌̈́̄̒̑͌ͪ̀̀̚̕ͅͅ天̶̛̯͙͚͖̝͔̱̣̼̲͍̮̳̎ͦ͛̿͑͗̏ͧ̍͛̓̾̈́ͧ͊ͧ̄气ͮͤͩͬ̆͏̧̺̠̺̗̼͔̞̻̥̗̬̱̦͓̥̺̗̩̩̂̏͌ͯͧ̿́͑̅ͯ̕͟͠͝ͅ渐̵̖̗̟͉̦̐̊ͬ̉́̐̃͘变̵̙̳̙̜ͬ̈̀̊̃̿̈́̋̈͋̈́͆ͪͫ̂̽͊̃͡得̡͇̙̜̖̠̻̱̣͊̐̊͊̏ͦ̈́̒͆ͫ̑͛͐ͤͬ̽ͩ͢͢ͅͅ寒̶̝͎̯ͫ̓̍̓ͧ͆ͩ͗ͤ̚泠̨͖̯̮̼̖̪̦̲̖͉̹̟̥̟͖̔̽͑̒̿͐͌̋͗͛͋̿̄̏̕͜͝。̜͈̖̗̖̐͛͆̂̈̿́ͫ͠请̵̢͔̘͕̲͖͈͖̯̠̗̤̗̪̝̩̘͑̌̌ͦ͗ͩ͗̈́͆ͨ̓ͥ̓ͫͪ́̄̂̈́ͪ͌̂̈́͑̉̾͗ͥ̾ͬ̚͞͞ͅ ̴̯̲͈͙̖̫͚̯̲̂̉̉ͭͬ̉͊̀ͫ̄̚͘͢ ̸̛̮̦͖͇͕͓͇̖̯̳̻͍̠̪͍̖̒̊ͪ̇͑̆ͯ͛̇ͪͨ̌̒ͨ͌͗̈̃ ̵̟̟̖̯͕̙̭̙̗̼̤͈͚̪͈̺̲͓ͬͧͫ̓ͩ̂̽̀ͪͨ̄͑͐̅̉͟͝家̴̰̘͉͓̺̠̪̙̜͔̲͎͎͓̼̆͗ͮͥ͂̓ͬ͑̄̊́͡.̵͖̗̘̼͙̼̰̤͖͓ͭ̽͒̍̆̓́͛̎̍ͪ͒ͥͮ̉ͭͭ̚ͅ ͚͓̻̰̺̍̍ͭͦ̃̈̎̉̀̓̕ ̧̹͍͎̑̂ͮͩ́注͒̉͌͗͒ͬͤ͂̌ͧ̏ͬ̇̅͑͜҉̟̝͈̬͇̝͇̦̤̹̤͎̪̭̟̳̱ͯ̃̏̆̎ͥ͜͠ ̤͎̝̝̭̻̮̏͑ͤ͌̏̿̈́͑̓̒̌̌͑̿̽̄͐͐͞ͅͅ.̨͗̑ͭ͏̢͇͔̤̟͍̲͕͓ͅ ̡͖̦͍̖͇̞̤͕̞̟͔̙̺͈̥͓̰̬̓̍̿̇͗保̡̹̙͖̰̦̬̼̣̻̦̤̓͗ͪ̄ͪͨ̓͌ͫ͋́͢暖̨̛͎̼̟̌̾ͧ͐͊͢，̴̸̶̮̗̙̥̦̘̫̞͍̩̪̼̣̞̺̄̉̌ͬͣ̄͛̈̾̋̌̏̌̊͞以͖̲̱̱̮̥̫̘̰̜̫̪̩͔̬̃ͤ̎̾̒͋̈́̀͝ͅ免各位复读机，天气逐渐变得寒冷。请大家注意保暖，以免线路老化，影响复读。 各位复读机，天气逐渐变得寒冷。请大̧̧̓̓̐ ͆ͩ ̍ ̾̉̎̎ͩ家̔̅̉҉̡. ̴̡ͮ̽̐ ̷̉. ̴̡ͮ̽读不然会像我这种复读不清楚 各̯͓̥ͭͥͩ̽͗̑̇̎ͩ̀͢位̛̍͒̀͌ͯ͌͋̎̉̎̚̚҉̵͏̵̨̝̪͎̪̤̺̣̺͈̘̻̦̱̯̙̜̯̫͈͇̭̺̟͓̘̓ͤͤͣ̄̄̈́ͧ̽̂̀̚͞ͅ读̸̜̠̭͍͙ͩ̀ͣ͆̍̈͒̉̌̉̂͛̓͜͠͠机̪͓̥̪͊̎̆̎̃͆̈́́̚，̵̸͓̣̣̳̭͓̞͎̍ͤ͊ͯͮ̓͑͌̈́̄̒̑͌ͪ̀̀̚̕ͅͅ天̶̛̯͙͚͖̝͔̱̣̼̲͍̮̳̎ͦ͛̿͑͗̏ͧ̍͛̓̾̈́ͧ͊ͧ̄气ͮͤͩͬ̆͏̧̺̠̺̗̼͔̞̻̥̗̬̱̦͓̥̺̗̩̩̂̏͌ͯͧ̿́͑̅ͯ̕͟͠͝ͅ渐̵̖̗̟͉̦̐̊ͬ̉́̐̃͘变̵̙̳̙̜ͬ̈̀̊̃̿̈́̋̈͋̈́͆ͪͫ̂̽͊̃͡得̡͇̙̜̖̠̻̱̣͊̐̊͊̏ͦ̈́̒͆ͫ̑͛͐ͤͬ̽ͩ͢͢ͅͅ寒̶̝͎̯ͫ̓̍̓ͧ͆ͩ͗ͤ̚泠̨͖̯̮̼̖̪̦̲̖͉̹̟̥̟͖̔̽͑̒̿͐͌̋͗͛͋̿̄̏̕͜͝。̜͈̖̗̖̐͛͆̂̈̿́ͫ͠请̵̢͔̘͕̲͖͈͖̯̠̗̤̗̪̝̩̘͑̌̌ͦ͗ͩ͗̈́͆ͨ̓ͥ̓ͫͪ́̄̂̈́ͪ͌̂̈́͑̉̾͗ͥ̾ͬ̚͞͞ͅ ̴̯̲͈͙̖̫͚̯̲̂̉̉ͭͬ̉͊̀ͫ̄̚͘͢ ̸̛̮̦͖͇͕͓͇̖̯̳̻͍̠̪͍̖̒̊ͪ̇͑̆ͯ͛̇ͪͨ̌̒ͨ͌͗̈̃ ̵̟̟̖̯͕̙̭̙̗̼̤͈͚̪͈̺̲͓ͬͧͫ̓ͩ̂̽̀ͪͨ̄͑͐̅̉͟͝家̴̰̘͉͓̺̠̪̙̜͔̲͎͎͓̼̆͗ͮͥ͂̓ͬ͑̄̊́͡.̵͖̗̘̼͙̼̰̤͖͓ͭ̽͒̍̆̓́͛̎̍ͪ͒ͥͮ̉ͭͭ̚ͅ ͚͓̻̰̺̍̍ͭͦ̃̈̎̉̀̓̕ ̧̹͍͎̑̂ͮͩ́注͒̉͌͗͒ͬͤ͂̌ͧ̏ͬ̇̅͑͜҉̟̝͈̬͇̝͇̦̤̹̤͎̪̭̟̳̱ͯ̃̏̆̎ͥ͜͠ ̤͎̝̝̭̻̮̏͑ͤ͌̏̿̈́͑̓̒̌̌͑̿̽̄͐͐͞ͅͅ.̨͗̑ͭ͏̢͇͔̤̟͍̲͕͓ͅ ̡͖̦͍̖͇̞̤͕̞̟͔̙̺͈̥͓̰̬̓̍̿̇͗保̡̹̙͖̰̦̬̼̣̻̦̤̓͗ͪ̄ͪͨ̓͌ͫ͋́͢暖̨̛͎̼̟̌̾ͧ͐͊͢"</span> <span class="attr">a_actionData</span>=<span class="string">"mqqapi://card/show_pslcard?src_type=internal<span class="symbol">&amp;amp;</span>source=sharecard<span class="symbol">&amp;amp;</span>version=1<span class="symbol">&amp;amp;</span>uin=1692634246"</span> <span class="attr">brief</span>=<span class="string">"您有新的消息"</span> <span class="attr">sourcePublicUin</span>=<span class="string">"3043786528"</span> <span class="attr">sourceMsgId</span>=<span class="string">"1564738903051667"</span> <span class="attr">url</span>=<span class="string">"https://post.mp.qq.com/group/article/32363631363339303136-550394632.html?<span class="symbol">&amp;amp;</span>_wv=2147483777<span class="symbol">&amp;amp;</span>article_id=550394632<span class="symbol">&amp;amp;</span>time=1564738800<span class="symbol">&amp;amp;</span>sig=2ddfb161b623012c2a97556283aae6e5"</span> <span class="attr">flag</span>=<span class="string">"37"</span> <span class="attr">sType</span>=<span class="string">"1"</span> <span class="attr">adverSign</span>=<span class="string">"0"</span> <span class="attr">multiMsgFlag</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"6"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">title</span> <span class="attr">size</span>=<span class="string">"65"</span>&gt;</span>♡**欲言又止**♡<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;<span class="name">summary</span> <span class="attr">type</span>=<span class="string">"1"</span>&gt;</span>5月21日5:20<span class="tag">&lt;/<span class="name">summary</span>&gt;</span><span class="tag">&lt;<span class="name">picture</span> <span class="attr">cover</span>=<span class="string">"http://gchat.qpic.cn/gchatpic_new/2641296238/735524882-3219132080-0B411A2AD75E45D611EBCC3A76BD4A0D/0"</span> <span class="attr">w</span>=<span class="string">"0"</span> <span class="attr">h</span>=<span class="string">"0"</span> /&gt;</span><span class="tag">&lt;<span class="name">picture</span> <span class="attr">cover</span>=<span class="string">"http://gchat.qpic.cn/gchatpic_new/2641296238/735524882-3219132080-95C47227C79C2CB305B571E31F43C618/0"</span> <span class="attr">w</span>=<span class="string">"0"</span> <span class="attr">h</span>=<span class="string">"0"</span> /&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"0"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">hr</span> <span class="attr">hidden</span>=<span class="string">"false"</span> <span class="attr">style</span>=<span class="string">"0"</span> /&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"0"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"0"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">title</span>&gt;</span>我会在每个有意义的时辰，远隔山海与你共存。<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"0"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">hr</span> <span class="attr">hidden</span>=<span class="string">"false"</span> <span class="attr">style</span>=<span class="string">"0"</span> /&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"0"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">source</span> <span class="attr">name</span>=<span class="string">"点击这里直达"</span> <span class="attr">icon</span>=<span class="string">"http://t.cn/RVIeaZK"</span> <span class="attr">url</span>=<span class="string">"https://baidu.com"</span> <span class="attr">action</span>=<span class="string">"web"</span> <span class="attr">appid</span>=<span class="string">"-1"</span> /&gt;</span><span class="tag">&lt;/<span class="name">msg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="群友召唤"><a href="#群友召唤" class="headerlink" title="群友召唤"></a>群友召唤</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version='1.0' encoding='UTF-8' standalone='yes' ?&gt;</span><span class="tag">&lt;<span class="name">msg</span> <span class="attr">serviceID</span>=<span class="string">"60"</span> <span class="attr">templateID</span>=<span class="string">"123"</span> <span class="attr">action</span>=<span class="string">"web"</span> <span class="attr">brief</span>=<span class="string">"你已被移出群聊"</span> <span class="attr">sourceMsgId</span>=<span class="string">"0"</span> <span class="attr">url</span>=<span class="string">""</span> <span class="attr">flag</span>=<span class="string">"0"</span> <span class="attr">adverSign</span>=<span class="string">"0"</span> <span class="attr">multiMsgFlag</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"1"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span> /&gt;</span><span class="tag">&lt;<span class="name">item</span> <span class="attr">layout</span>=<span class="string">"1"</span> <span class="attr">advertiser_id</span>=<span class="string">"0"</span> <span class="attr">aid</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">summary</span> <span class="attr">size</span>=<span class="string">"×FF0000"</span>&gt;</span>群友召唤术？<span class="tag">&lt;/<span class="name">summary</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span><span class="tag">&lt;<span class="name">source</span> <span class="attr">name</span>=<span class="string">""</span> <span class="attr">icon</span>=<span class="string">""</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">appid</span>=<span class="string">"-1"</span> /&gt;</span><span class="tag">&lt;/<span class="name">msg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="匿名图"><a href="#匿名图" class="headerlink" title="匿名图"></a>匿名图</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;app&quot;:&quot;com.tencent.mobileqq.reading&quot;,&quot;desc&quot;:&quot;&quot;,&quot;view&quot;:&quot;singleImg&quot;, &quot;ver&quot;:&quot;1.0.0.70&quot;,&quot;prompt&quot;:&quot;。。。。&quot;,&quot;appID&quot;:&quot;&quot;,&quot;sourceName&quot;:&quot;&quot;,&quot;actionData&quot;:&quot;&quot;, &quot;actionData_A&quot;:&quot;&quot;,&quot;sourceUrl&quot;:&quot;&quot;,&quot;meta&quot;:&#123;&quot;singleImg&quot;:&#123;&quot;mainImage&quot;:&quot;http:&#x2F;&#x2F;huifeideyu.top&#x2F;res&#x2F;static&#x2F;images&#x2F;item.png&quot;, &quot;mainUrl&quot;:&quot;https:&#x2F;&#x2F;post.qq.com&quot;&#125;&#125;,&quot;config&quot;:&#123;&quot;forward&quot;:0,&quot;showSender&quot;:1&#125;,&quot;text&quot;:&quot;qtxml.cn&quot;,&quot;sourceAd&quot;:&quot;&quot;,&quot;config&quot;:&#123;&quot;forward&quot;:0,&quot;showSender&quot;:0&#125;&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">============本文结束( ´◔ ‸◔`)感谢您的阅读============</div>
+    
+</div>
+      
+    </div>
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>W7
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2020/03/19/QQ-XML/" title="QQ&#x2F;XML">http://yoursite.com/2020/03/19/QQ-XML/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/QQ/" rel="tag"># QQ</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/18/DNS%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="prev" title="DNS域名服务">
+      <i class="fa fa-chevron-left"></i> DNS域名服务
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/19/%E5%8F%8B%E9%93%BE/" rel="next" title="友链">
+      友链 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#官方"><span class="nav-number">1.</span> <span class="nav-text">官方</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#QQ新闻："><span class="nav-number">1.1.</span> <span class="nav-text">QQ新闻：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#天气：卡片-gt-gt-gt"><span class="nav-number">1.2.</span> <span class="nav-text">天气：卡片&gt;&gt;&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#天气：链接-gt-gt-gt"><span class="nav-number">1.3.</span> <span class="nav-text">天气：链接&gt;&gt;&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#QQ团队-登陆成功-gt-gt-gt"><span class="nav-number">1.4.</span> <span class="nav-text">QQ团队:登陆成功&gt;&gt;&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#QQ团队-阅读全文-gt-gt-gt"><span class="nav-number">1.5.</span> <span class="nav-text">QQ团队:阅读全文&gt;&gt;&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小程序-gt-gt-gt"><span class="nav-number">1.6.</span> <span class="nav-text">小程序&gt;&gt;&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#礼物"><span class="nav-number">1.7.</span> <span class="nav-text">礼物</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">1.8.</span> <span class="nav-text">链接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义-gt-gt-gt"><span class="nav-number">2.</span> <span class="nav-text">自定义&gt;&gt;&gt;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#红包-gt-gt-gt"><span class="nav-number">2.1.</span> <span class="nav-text">红包&gt;&gt;&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#官方推荐"><span class="nav-number">2.2.</span> <span class="nav-text">官方推荐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pic-1"><span class="nav-number">2.3.</span> <span class="nav-text">Pic 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#群友召唤"><span class="nav-number">2.4.</span> <span class="nav-text">群友召唤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匿名图"><span class="nav-number">2.5.</span> <span class="nav-text">匿名图</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="W7"
+      src="/images/head.jpg">
+  <p class="site-author-name" itemprop="name">W7</p>
+  <div class="site-description" itemprop="description">知识是一种乐趣，好奇是知识的萌芽</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wemaxel" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wemaxel" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:i@wqian.top" title="E-Mail → mailto:i@wqian.top" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/5529099160?is_all=1" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;5529099160?is_all&#x3D;1" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/images/weichat.jpg" title="WeChat → &#x2F;images&#x2F;weichat.jpg"><i class="fa fa-fw fa-weixin"></i></a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+      <div style="">
+  <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+</div>
+<script>
+(function(){
+
+   var digit=
+    [
+        [
+            [0,0,1,1,1,0,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,0,1,1,0],
+            [0,0,1,1,1,0,0]
+        ],//0
+        [
+            [0,0,0,1,1,0,0],
+            [0,1,1,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [1,1,1,1,1,1,1]
+        ],//1
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,1,1],
+            [1,1,1,1,1,1,1]
+        ],//2
+        [
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//3
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,0],
+            [0,0,1,1,1,1,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,1,1,0],
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,1]
+        ],//4
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,1,1,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//5
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//6
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0]
+        ],//7
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//8
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,1,1,0,0,0,0]
+        ],//9
+        [
+            [0,0,0,0,0,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,0,0,0]
+        ]//:
+    ];
+
+var canvas = document.getElementById('canvas');
+
+if(canvas.getContext){
+    var cxt = canvas.getContext('2d');
+    //声明canvas的宽高
+    var H = 100,W = 700;
+    canvas.height = H;
+    canvas.width = W;
+    cxt.fillStyle = '#f00';
+    cxt.fillRect(10,10,50,50);
+
+    //存储时间数据
+    var data = [];
+    //存储运动的小球
+    var balls = [];
+    //设置粒子半径
+    var R = canvas.height/20-1;
+    (function(){
+        var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+        //存储时间数字，由十位小时、个位小时、冒号、十位分钟、个位分钟、冒号、十位秒钟、个位秒钟这7个数字组成
+        data.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+    })();
+
+    /*生成点阵数字*/
+    function renderDigit(index,num){
+        for(var i = 0; i < digit[num].length; i++){
+            for(var j = 0; j < digit[num][i].length; j++){
+                if(digit[num][i][j] == 1){
+                    cxt.beginPath();
+                    cxt.arc(14*(R+2)*index + j*2*(R+1)+(R+1),i*2*(R+1)+(R+1),R,0,2*Math.PI);
+                    cxt.closePath();
+                    cxt.fill();
+                }
+            }
+        }
+    }
+
+    /*更新时钟*/
+    function updateDigitTime(){
+        var changeNumArray = [];
+        var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+        var NewData = [];
+        NewData.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+        for(var i = data.length-1; i >=0 ; i--){
+            //时间发生变化
+            if(NewData[i] !== data[i]){
+                //将变化的数字值和在data数组中的索引存储在changeNumArray数组中
+                changeNumArray.push(i+'_'+(Number(data[i])+1)%10);
+            }
+        }
+        //增加小球
+        for(var i = 0; i< changeNumArray.length; i++){
+            addBalls.apply(this,changeNumArray[i].split('_'));
+        }
+        data = NewData.concat();
+    }
+
+    /*更新小球状态*/
+    function updateBalls(){
+        for(var i = 0; i < balls.length; i++){
+            balls[i].stepY += balls[i].disY;
+            balls[i].x += balls[i].stepX;
+            balls[i].y += balls[i].stepY;
+            if(balls[i].x > W + R || balls[i].y > H + R){
+                balls.splice(i,1);
+                i--;
+            }
+        }
+    }
+
+    /*增加要运动的小球*/
+    function addBalls(index,num){
+        var numArray = [1,2,3];
+        var colorArray =  ["#3BE","#09C","#A6C","#93C","#9C0","#690","#FB3","#F80","#F44","#C00"];
+        for(var i = 0; i < digit[num].length; i++){
+            for(var j = 0; j < digit[num][i].length; j++){
+                if(digit[num][i][j] == 1){
+                    var ball = {
+                        x:14*(R+2)*index + j*2*(R+1)+(R+1),
+                        y:i*2*(R+1)+(R+1),
+                        stepX:Math.floor(Math.random() * 4 -2),
+                        stepY:-2*numArray[Math.floor(Math.random()*numArray.length)],
+                        color:colorArray[Math.floor(Math.random()*colorArray.length)],
+                        disY:1
+                    };
+                    balls.push(ball);
+                }
+            }
+        }
+    }
+
+    /*渲染*/
+    function render(){
+        //重置画布宽度，达到清空画布的效果
+        canvas.height = 100;
+        //渲染时钟
+        for(var i = 0; i < data.length; i++){
+            renderDigit(i,data[i]);
+        }
+        //渲染小球
+        for(var i = 0; i < balls.length; i++){
+            cxt.beginPath();
+            cxt.arc(balls[i].x,balls[i].y,R,0,2*Math.PI);
+            cxt.fillStyle = balls[i].color;
+            cxt.closePath();
+            cxt.fill();
+        }
+    }
+
+    clearInterval(oTimer);
+    var oTimer = setInterval(function(){
+        //更新时钟
+        updateDigitTime();
+        //更新小球状态
+        updateBalls();
+        //渲染
+        render();
+    },50);
+}
+
+})();
+</script>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+<span class="with-love" id="animate" style="font-size: 13px">
+  <i class="fa fa-heart"></i>
+</span>
+  <span class="author" itemprop="copyrightHolder">W7</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  <!-- 页面点击心形 -->
+<script type="text/javascript" src="/js/clicklove.js"></script>
+<script src="/live2d-widget/autoload.js"></script>
+</body>
+</html>
+

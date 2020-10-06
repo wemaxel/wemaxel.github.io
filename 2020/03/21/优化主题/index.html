@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","width":230,"display":"post","padding":15,"offset":10,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="配置优化这东西是真的浪费时间，要不是我懒就该换个博客了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="优化主题">
+<meta property="og:url" content="http://yoursite.com/2020/03/21/%E4%BC%98%E5%8C%96%E4%B8%BB%E9%A2%98/index.html">
+<meta property="og:site_name" content="W7">
+<meta property="og:description" content="配置优化这东西是真的浪费时间，要不是我懒就该换个博客了">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2020/03/21/%E4%BC%98%E5%8C%96%E4%B8%BB%E9%A2%98/s.png">
+<meta property="article:published_time" content="2020-03-21T09:43:17.000Z">
+<meta property="article:modified_time" content="2020-05-27T14:29:57.077Z">
+<meta property="article:author" content="W7">
+<meta property="article:tag" content="hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/21/%E4%BC%98%E5%8C%96%E4%B8%BB%E9%A2%98/s.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/03/21/%E4%BC%98%E5%8C%96%E4%B8%BB%E9%A2%98/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>优化主题 | W7</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">W7</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">欢迎光临本破站</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>链接</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-fw fa-calendar"></i>葵花宝典</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/21/%E4%BC%98%E5%8C%96%E4%B8%BB%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="W7">
+      <meta itemprop="description" content="知识是一种乐趣，好奇是知识的萌芽">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="W7">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          优化主题
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-21 17:43:17" itemprop="dateCreated datePublished" datetime="2020-03-21T17:43:17+08:00">2020-03-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-27 22:29:57" itemprop="dateModified" datetime="2020-05-27T22:29:57+08:00">2020-05-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Blog/" itemprop="url" rel="index"><span itemprop="name">Blog</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>配置优化这东西是真的浪费时间，<del>要不是我懒就该换个博客了</del></p>
+<a id="more"></a>
+
+<h3 id="hexo-init-xxx"><a href="#hexo-init-xxx" class="headerlink" title="hexo init /xxx"></a>hexo init /xxx</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init D:&#x2F;521&#x2F;NEW</span><br></pre></td></tr></table></figure>
+<p>调试： <code>hexo s --debug</code></p>
+<h3 id="还是继续用next"><a href="#还是继续用next" class="headerlink" title="还是继续用next"></a>还是继续用next</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;theme-next&#x2F;hexo-theme-next themes&#x2F;next</span><br></pre></td></tr></table></figure>
+<p>为什么挂代理还是这么慢……<br>没下载完先改一下<code># Hexo Configuration</code>基本信息<br>ctrl+c/ctrl+v,主题换成next再习惯性的删了原主题<br>把next切换到Gemini</p>
+<h3 id="菜单栏："><a href="#菜单栏：" class="headerlink" title="菜单栏："></a>菜单栏：</h3><p>menu打开用到那几个，顺便加上友链<code>friendlink: /friendlink/ || link</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo new page &quot;schedule&quot;</span><br><span class="line">hexo new page &quot;about&quot;</span><br><span class="line">hexo new page &quot;tags&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="友链"><a href="#友链" class="headerlink" title="友链"></a>友链</h3><p>要增加友链页面的样式的没弄好，还是以后再改吧</p>
+<h3 id="修改回到顶部"><a href="#修改回到顶部" class="headerlink" title="修改回到顶部"></a>修改回到顶部</h3><pre><code>back2top:
+  enable: true
+  # Back to top in sidebar.
+  sidebar: true
+  # Scroll percent label in b2t button.
+  scrollpercent: true</code></pre><h3 id="社交链接"><a href="#社交链接" class="headerlink" title="社交链接"></a>社交链接</h3><pre><code># Social Links
+# Usage: `Key: permalink || icon`
+# Key is the link label showing to end users.
+.......</code></pre><h3 id="头像"><a href="#头像" class="headerlink" title="头像"></a>头像</h3><pre><code>avatar:
+  # Replace the default image and set the url here.
+.......</code></pre><p>然后把图片扔进去</p>
+<h3 id="圆角"><a href="#圆角" class="headerlink" title="圆角"></a>圆角</h3><p>hexo的source添加<code>_data/next.yml</code><br>添加圆角设置并在next配置取消<code>variables.styl</code>注释</p>
+<pre><code>// 圆角设置
+$border-radius-inner     = 20px 20px 20px 20px;
+$border-radius           = 20px;</code></pre><p>原来的 <code>next/source/css/_custom/_custom.styl</code> 可以放在 <code>hexo/source/_data/styles.styl</code> </p>
+<h3 id="半透明"><a href="#半透明" class="headerlink" title="半透明"></a>半透明</h3><p>在<code>hexo/source/_data/styles.styl</code>添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;博客内容透明化</span><br><span class="line">&#x2F;&#x2F;文章内容的透明度设置</span><br><span class="line">.content-wrap &#123;</span><br><span class="line">  opacity: 0.9;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;侧边框的透明度设置</span><br><span class="line">.sidebar &#123;</span><br><span class="line">  opacity: 0.9;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;菜单栏的透明度设置</span><br><span class="line">.header-inner &#123;</span><br><span class="line">  background: rgba(255,255,255,0.9);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;搜索框（local-search）的透明度设置</span><br><span class="line">.popup &#123;</span><br><span class="line">  opacity: 0.9;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="背景图"><a href="#背景图" class="headerlink" title="背景图"></a>背景图</h3><p>先把图片放进去<br>在<code>hexo/source/_data/styles.styl</code>添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">    background:url(&#x2F;images&#x2F;yourbackground.jpg);</span><br><span class="line">    background-repeat: no-repeat;</span><br><span class="line">    background-attachment:fixed; &#x2F;&#x2F;不重复</span><br><span class="line">    background-size: cover;      &#x2F;&#x2F;填充</span><br><span class="line">    background-position:50% 50%;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="还是加上分类吧，"><a href="#还是加上分类吧，" class="headerlink" title="还是加上分类吧，"></a>还是加上分类吧，</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
+<p>改一下md</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 文章分类</span><br><span class="line">date: 2020-03-20 13:47:40</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>用的时候和tag应该是一样的</p>
+<h3 id="添加搜索"><a href="#添加搜索" class="headerlink" title="添加搜索"></a>添加搜索</h3><p>NexT 主题用Hexo的拓展包 <code>hexo-generator-searchdb</code>，预先生成了一个文本库 search.xml，然后传到了网站里面。在本地搜索的时候，NexT 直接用 javascript 调用了这个文件，从而实现了静态网站的本地搜索。~安装插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+<p>好了,显示<code>+ hexo-generator-searchdb@1.2.0</code><br>到next主配置打开search&gt;发现可以搜索了</p>
+<h3 id="文末提醒"><a href="#文末提醒" class="headerlink" title="文末提醒"></a>文末提醒</h3><p>在<code>\themes\next\layout\_macro</code>中新建<code>passage-end-tag.swig</code>文件,复制下列代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% if not is_index %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"text-align:center;color: #ccc;font-size:14px;"</span>&gt;</span>============本文结束( ´◔ ‸◔`)感谢您的阅读============<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>打开<code>\themes\next\layout\_macro\post.swig</code>，在<code>post-body</code>之后，<code>post-footer</code>之前添加:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  &#123;% if not is_index %&#125;</span><br><span class="line">    &#123;% include 'passage-end-tag.swig' %&#125;</span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>打开主题配置文件在末尾添加“本文结束”标记：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">passage_end_tag:</span><br><span class="line">  enabled: true</span><br></pre></td></tr></table></figure>
+
+<h3 id="鼠标点击效果"><a href="#鼠标点击效果" class="headerlink" title="鼠标点击效果"></a>鼠标点击效果</h3><p><strong>** 爆炸效果**</strong><br><code>next/source/js中新建firework.js</code>，并将粘贴代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"use strict"</span>;<span class="keyword">function</span> updateCoords(e)&#123;pointerX=(e.clientX||e.touches[0].clientX)-canvasEl.getBoundingClientRect().left,pointerY=e.clientY||e.touches[0].clientY-canvasEl.getBoundingClientRect().top&#125;<span class="keyword">function</span> setParticuleDirection(e)&#123;var t=anime.random(0,360)*Math.PI/180,a=anime.random(50,180),n=[-1,1][anime.random(0,1)]*a;<span class="built_in">return</span>&#123;x:e.x+n*Math.cos(t),y:e.y+n*Math.sin(t)&#125;&#125;<span class="keyword">function</span> createParticule(e,t)&#123;var a=&#123;&#125;;<span class="built_in">return</span> a.x=e,a.y=t,a.color=colors[anime.random(0,colors.length-1)],a.radius=anime.random(16,32),a.endPos=setParticuleDirection(a),a.draw=<span class="function"><span class="title">function</span></span>()&#123;ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.fillStyle=a.color,ctx.fill()&#125;,a&#125;<span class="keyword">function</span> createCircle(e,t)&#123;var a=&#123;&#125;;<span class="built_in">return</span> a.x=e,a.y=t,a.color=<span class="string">"#F00"</span>,a.radius=0.1,a.alpha=0.5,a.lineWidth=6,a.draw=<span class="function"><span class="title">function</span></span>()&#123;ctx.globalAlpha=a.alpha,ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.lineWidth=a.lineWidth,ctx.strokeStyle=a.color,ctx.stroke(),ctx.globalAlpha=1&#125;,a&#125;<span class="keyword">function</span> renderParticule(e)&#123;<span class="keyword">for</span>(var t=0;t&lt;e.animatables.length;t++)&#123;e.animatables[t].target.draw()&#125;&#125;<span class="keyword">function</span> animateParticules(e,t)&#123;<span class="keyword">for</span>(var a=createCircle(e,t),n=[],i=0;i&lt;numberOfParticules;i++)&#123;n.push(createParticule(e,t))&#125;anime.timeline().add(&#123;targets:n,x:<span class="keyword">function</span>(e)&#123;<span class="built_in">return</span> e.endPos.x&#125;,y:<span class="keyword">function</span>(e)&#123;<span class="built_in">return</span> e.endPos.y&#125;,radius:0.1,duration:anime.random(1200,1800),easing:<span class="string">"easeOutExpo"</span>,update:renderParticule&#125;).add(&#123;targets:a,radius:anime.random(80,160),lineWidth:0,alpha:&#123;value:0,easing:<span class="string">"linear"</span>,duration:anime.random(600,800)&#125;,duration:anime.random(1200,1800),easing:<span class="string">"easeOutExpo"</span>,update:renderParticule,offset:0&#125;)&#125;<span class="keyword">function</span> debounce(e,t)&#123;var a;<span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;var n=this,i=arguments;clearTimeout(a),a=setTimeout(<span class="function"><span class="title">function</span></span>()&#123;e.apply(n,i)&#125;,t)&#125;&#125;var canvasEl=document.querySelector(<span class="string">".fireworks"</span>);<span class="keyword">if</span>(canvasEl)&#123;var ctx=canvasEl.getContext(<span class="string">"2d"</span>),numberOfParticules=30,pointerX=0,pointerY=0,tap=<span class="string">"mousedown"</span>,colors=[<span class="string">"#FF1461"</span>,<span class="string">"#18FF92"</span>,<span class="string">"#5A87FF"</span>,<span class="string">"#FBF38C"</span>],setCanvasSize=debounce(<span class="function"><span class="title">function</span></span>()&#123;canvasEl.width=2*window.innerWidth,canvasEl.height=2*window.innerHeight,canvasEl.style.width=window.innerWidth+<span class="string">"px"</span>,canvasEl.style.height=window.innerHeight+<span class="string">"px"</span>,canvasEl.getContext(<span class="string">"2d"</span>).scale(2,2)&#125;,500),render=anime(&#123;duration:1/0,update:<span class="function"><span class="title">function</span></span>()&#123;ctx.clearRect(0,0,canvasEl.width,canvasEl.height)&#125;&#125;);document.addEventListener(tap,<span class="keyword">function</span>(e)&#123;<span class="string">"sidebar"</span>!==e.target.id&amp;&amp;<span class="string">"toggle-sidebar"</span>!==e.target.id&amp;&amp;<span class="string">"A"</span>!==e.target.nodeName&amp;&amp;<span class="string">"IMG"</span>!==e.target.nodeName&amp;&amp;(render.play(),updateCoords(e),animateParticules(pointerX,pointerY))&#125;,!1),setCanvasSize(),window.addEventListener(<span class="string">"resize"</span>,setCanvasSize,!1)&#125;<span class="string">"use strict"</span>;<span class="keyword">function</span> updateCoords(e)&#123;pointerX=(e.clientX||e.touches[0].clientX)-canvasEl.getBoundingClientRect().left,pointerY=e.clientY||e.touches[0].clientY-canvasEl.getBoundingClientRect().top&#125;<span class="keyword">function</span> setParticuleDirection(e)&#123;var t=anime.random(0,360)*Math.PI/180,a=anime.random(50,180),n=[-1,1][anime.random(0,1)]*a;<span class="built_in">return</span>&#123;x:e.x+n*Math.cos(t),y:e.y+n*Math.sin(t)&#125;&#125;<span class="keyword">function</span> createParticule(e,t)&#123;var a=&#123;&#125;;<span class="built_in">return</span> a.x=e,a.y=t,a.color=colors[anime.random(0,colors.length-1)],a.radius=anime.random(16,32),a.endPos=setParticuleDirection(a),a.draw=<span class="function"><span class="title">function</span></span>()&#123;ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.fillStyle=a.color,ctx.fill()&#125;,a&#125;<span class="keyword">function</span> createCircle(e,t)&#123;var a=&#123;&#125;;<span class="built_in">return</span> a.x=e,a.y=t,a.color=<span class="string">"#F00"</span>,a.radius=0.1,a.alpha=0.5,a.lineWidth=6,a.draw=<span class="function"><span class="title">function</span></span>()&#123;ctx.globalAlpha=a.alpha,ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.lineWidth=a.lineWidth,ctx.strokeStyle=a.color,ctx.stroke(),ctx.globalAlpha=1&#125;,a&#125;<span class="keyword">function</span> renderParticule(e)&#123;<span class="keyword">for</span>(var t=0;t&lt;e.animatables.length;t++)&#123;e.animatables[t].target.draw()&#125;&#125;<span class="keyword">function</span> animateParticules(e,t)&#123;<span class="keyword">for</span>(var a=createCircle(e,t),n=[],i=0;i&lt;numberOfParticules;i++)&#123;n.push(createParticule(e,t))&#125;anime.timeline().add(&#123;targets:n,x:<span class="keyword">function</span>(e)&#123;<span class="built_in">return</span> e.endPos.x&#125;,y:<span class="keyword">function</span>(e)&#123;<span class="built_in">return</span> e.endPos.y&#125;,radius:0.1,duration:anime.random(1200,1800),easing:<span class="string">"easeOutExpo"</span>,update:renderParticule&#125;).add(&#123;targets:a,radius:anime.random(80,160),lineWidth:0,alpha:&#123;value:0,easing:<span class="string">"linear"</span>,duration:anime.random(600,800)&#125;,duration:anime.random(1200,1800),easing:<span class="string">"easeOutExpo"</span>,update:renderParticule,offset:0&#125;)&#125;<span class="keyword">function</span> debounce(e,t)&#123;var a;<span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;var n=this,i=arguments;clearTimeout(a),a=setTimeout(<span class="function"><span class="title">function</span></span>()&#123;e.apply(n,i)&#125;,t)&#125;&#125;var canvasEl=document.querySelector(<span class="string">".fireworks"</span>);<span class="keyword">if</span>(canvasEl)&#123;var ctx=canvasEl.getContext(<span class="string">"2d"</span>),numberOfParticules=30,pointerX=0,pointerY=0,tap=<span class="string">"mousedown"</span>,colors=[<span class="string">"#FF1461"</span>,<span class="string">"#18FF92"</span>,<span class="string">"#5A87FF"</span>,<span class="string">"#FBF38C"</span>],setCanvasSize=debounce(<span class="function"><span class="title">function</span></span>()&#123;canvasEl.width=2*window.innerWidth,canvasEl.height=2*window.innerHeight,canvasEl.style.width=window.innerWidth+<span class="string">"px"</span>,canvasEl.style.height=window.innerHeight+<span class="string">"px"</span>,canvasEl.getContext(<span class="string">"2d"</span>).scale(2,2)&#125;,500),render=anime(&#123;duration:1/0,update:<span class="function"><span class="title">function</span></span>()&#123;ctx.clearRect(0,0,canvasEl.width,canvasEl.height)&#125;&#125;);document.addEventListener(tap,<span class="keyword">function</span>(e)&#123;<span class="string">"sidebar"</span>!==e.target.id&amp;&amp;<span class="string">"toggle-sidebar"</span>!==e.target.id&amp;&amp;<span class="string">"A"</span>!==e.target.nodeName&amp;&amp;<span class="string">"IMG"</span>!==e.target.nodeName&amp;&amp;(render.play(),updateCoords(e),animateParticules(pointerX,pointerY))&#125;,!1),setCanvasSize(),window.addEventListener(<span class="string">"resize"</span>,setCanvasSize,!1)&#125;;</span><br></pre></td></tr></table></figure>
+<p>打开<code>./themes/next/layout/_layout.swig</code> 并在 <code>&lt;head&gt;</code> 中间添加以下代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 爆炸效果 --&gt;</span><br><span class="line">&lt;canvas class=<span class="string">"fireworks"</span> style=<span class="string">"position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"</span> &gt;&lt;/canvas&gt; </span><br><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"//cdn.bootcss.com/animejs/2.2.0/anime.min.js"</span>&gt;&lt;/script&gt; </span><br><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"/js/firework.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>打开<code>./themes/next</code>路径下的<code>_config.yml</code>文件并在末尾添加以下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Fireworks</span><br><span class="line">fireworks: true</span><br></pre></td></tr></table></figure>
+<p>这爆炸······怎么波浪总是延迟，<br><strong>** 爱心 **</strong><br>在<code>next/source/js</code>中新建<code>clicklove.js</code>，并将粘贴下列代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!<span class="keyword">function</span>(e,t,a)&#123;<span class="keyword">function</span> <span class="function"><span class="title">n</span></span>()&#123;c(<span class="string">".heart&#123;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);&#125;.heart:after,.heart:before&#123;content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;&#125;.heart:after&#123;top: -5px;&#125;.heart:before&#123;left: -5px;&#125;"</span>),o(),r()&#125;<span class="keyword">function</span> <span class="function"><span class="title">r</span></span>()&#123;<span class="keyword">for</span>(var e=0;e&lt;d.length;e++)d[e].alpha&lt;=0?(t.body.removeChild(d[e].el),d.splice(e,1)):(d[e].y--,d[e].scale+=.004,d[e].alpha-=.013,d[e].el.style.cssText=<span class="string">"left:"</span>+d[e].x+<span class="string">"px;top:"</span>+d[e].y+<span class="string">"px;opacity:"</span>+d[e].alpha+<span class="string">";transform:scale("</span>+d[e].scale+<span class="string">","</span>+d[e].scale+<span class="string">") rotate(45deg);background:"</span>+d[e].color+<span class="string">";z-index:99999"</span>);requestAnimationFrame(r)&#125;<span class="keyword">function</span> <span class="function"><span class="title">o</span></span>()&#123;var t=<span class="string">"function"</span>==typeof e.onclick&amp;&amp;e.onclick;e.onclick=<span class="keyword">function</span>(e)&#123;t&amp;&amp;t(),i(e)&#125;&#125;<span class="keyword">function</span> i(e)&#123;var a=t.createElement(<span class="string">"div"</span>);a.className=<span class="string">"heart"</span>,d.push(&#123;el:a,x:e.clientX-5,y:e.clientY-5,scale:1,alpha:1,color:s()&#125;),t.body.appendChild(a)&#125;<span class="keyword">function</span> c(e)&#123;var a=t.createElement(<span class="string">"style"</span>);a.type=<span class="string">"text/css"</span>;try&#123;a.appendChild(t.createTextNode(e))&#125;catch(t)&#123;a.styleSheet.cssText=e&#125;t.getElementsByTagName(<span class="string">"head"</span>)[0].appendChild(a)&#125;<span class="keyword">function</span> <span class="function"><span class="title">s</span></span>()&#123;<span class="built_in">return</span><span class="string">"rgb("</span>+~~(255*Math.random())+<span class="string">","</span>+~~(255*Math.random())+<span class="string">","</span>+~~(255*Math.random())+<span class="string">")"</span>&#125;var d=[];e.requestAnimationFrame=<span class="function"><span class="title">function</span></span>()&#123;<span class="built_in">return</span> e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.oRequestAnimationFrame||e.msRequestAnimationFrame||<span class="keyword">function</span>(e)&#123;setTimeout(e,1e3/60)&#125;&#125;(),n()&#125;(window,document);</span><br></pre></td></tr></table></figure>
+<p>打开<code>/next/layout/_layout.swig</code>并在末尾添加以下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 页面点击心形 --&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;js&#x2F;clicklove.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="代码框复制按钮"><a href="#代码框复制按钮" class="headerlink" title="代码框复制按钮"></a>代码框复制按钮</h3><p>next主题配置找到打开<br>找到codeblock:</p>
+<h3 id="加载条"><a href="#加载条" class="headerlink" title="加载条"></a>加载条</h3><p>切换到Next主题文件夹<br>安装模块到<code>source/lib</code>文件夹</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;theme-next&#x2F;theme-next-pace source&#x2F;lib&#x2F;pace</span><br></pre></td></tr></table></figure>
+<p>打开Next主题路径下的配置文件_config.yml，搜索pace定位找到&gt;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Progress bar in the top during page loading.</span><br><span class="line"># Dependencies: https:&#x2F;&#x2F;github.com&#x2F;theme-next&#x2F;theme-next-pace</span><br><span class="line">pace: true</span><br><span class="line"># Themes list:</span><br><span class="line"># pace-theme-big-counter | pace-theme-bounce | pace-theme-barber-shop | pace-theme-center-atom</span><br><span class="line"># pace-theme-center-circle | pace-theme-center-radar | pace-theme-center-simple | pace-theme-corner-indicator</span><br><span class="line"># pace-theme-fill-left | pace-theme-flash | pace-theme-loading-bar | pace-theme-mac-osx | pace-theme-minimal</span><br><span class="line">pace_theme: pace-theme-flash</span><br></pre></td></tr></table></figure>
+<p>加了看板娘总是跳出加载条，又还是禁用了</p>
+<h3 id="鼠标"><a href="#鼠标" class="headerlink" title="鼠标"></a>鼠标</h3><p>在<code>/themes/next/source/css/main.styl</code> 添加样式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* 鼠标样式 *&#x2F;</span><br><span class="line">* &#123;</span><br><span class="line">  cursor: url(&#x2F;images&#x2F;default.cur),auto;</span><br><span class="line">&#125;</span><br><span class="line">:link &#123;</span><br><span class="line">  cursor: url(&#x2F;images&#x2F;pointer.cur),auto</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用到的光标文件：<code>default.cur、pointer.cur</code> 放在 <code>images</code> 目录下，<code>.cur</code>是静态光标文件，</p>
+<h3 id="标签页"><a href="#标签页" class="headerlink" title="标签页"></a>标签页</h3><p>在 <code>/themes/next/layout/</code> 目录下，新增 <code>tag-color.swig</code> 文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">     var alltags &#x3D; document.getElementsByClassName(&#39;tag-cloud-tags&#39;);</span><br><span class="line">     var tags &#x3D; alltags[0].getElementsByTagName(&#39;a&#39;);</span><br><span class="line">     for (var i &#x3D; tags.length - 1; i &gt;&#x3D; 0; i--) &#123;</span><br><span class="line">       var r&#x3D;Math.floor(Math.random()*75+130);</span><br><span class="line">       var g&#x3D;Math.floor(Math.random()*75+100);</span><br><span class="line">       var b&#x3D;Math.floor(Math.random()*75+80);</span><br><span class="line">       tags[i].style.background &#x3D; &quot;rgb(&quot;+r+&quot;,&quot;+g+&quot;,&quot;+b+&quot;)&quot;;</span><br><span class="line">     &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">  .tag-cloud-tags&#123;</span><br><span class="line">    &#x2F;*font-family: Helvetica, Tahoma, Arial;*&#x2F;</span><br><span class="line">    &#x2F;*font-weight: 100;*&#x2F;</span><br><span class="line">    text-align: center;</span><br><span class="line">    counter-reset: tags;</span><br><span class="line">  &#125;</span><br><span class="line">  .tag-cloud-tags a&#123;</span><br><span class="line">    border-radius: 6px;</span><br><span class="line">    padding-right: 5px;</span><br><span class="line">    padding-left: 5px;</span><br><span class="line">    margin: 8px 5px 0px 0px;</span><br><span class="line">  &#125;</span><br><span class="line">  .tag-cloud-tags a:before&#123;</span><br><span class="line">    content: &quot;🔖&quot;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  .tag-cloud-tags a:hover&#123;</span><br><span class="line">     box-shadow: 0px 5px 15px 0px rgba(0,0,0,.4);</span><br><span class="line">     transform: scale(1.1);</span><br><span class="line">     &#x2F;*box-shadow: 10px 10px 15px 2px rgba(0,0,0,.12), 0 0 6px 0 rgba(104, 104, 105, 0.1);*&#x2F;</span><br><span class="line">     transition-duration: 0.15s;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+<p>在同级目录的 <code>page.swig</code> 中引入 <code>tag-color.swig</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">    &lt;div class&#x3D;&quot;tag-cloud&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- 目前共计xxx个标签</span><br><span class="line">        &lt;div class&#x3D;&quot;tag-cloud-title&quot;&gt;</span><br><span class="line">            &#123;&#123; _p(&#39;counter.tag_cloud&#39;, site.tags.length) &#125;&#125;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">        --&gt;</span><br><span class="line">    </span><br><span class="line">        &lt;div class&#x3D;&quot;tag-cloud-tags&quot;&gt;</span><br><span class="line">          &#123;&#123; tagcloud(&#123;min_font: 10, max_font: 15, amount: 300, color: true, start_color: &#39;#ccc&#39;, end_color: &#39;#111&#39;&#125;) &#125;&#125;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">    </span><br><span class="line">+     &#123;% include &#39;tag-color.swig&#39; %&#125;</span><br><span class="line">    </span><br><span class="line">    &#123;% elif page.type &#x3D;&#x3D;&#x3D; &#39;categories&#39; %&#125;</span><br><span class="line">      &lt;div class&#x3D;&quot;category-all-page&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;category-all-title&quot;&gt;</span><br><span class="line">            &#123;&#123; _p(&#39;counter.categories&#39;, site.categories.length) &#125;&#125;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;category-all&quot;&gt;</span><br><span class="line">          &#123;&#123; list_categories() &#125;&#125;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="readmore"><a href="#readmore" class="headerlink" title="readmore"></a>readmore</h3><p>手动截断，</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- more --&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2D看板娘"><a href="#2D看板娘" class="headerlink" title="2D看板娘"></a>2D看板娘</h3><p>用过官方那什么什么的忘了一下载就是shizuku，<br>后来发现还有可以换装更好玩的&gt;&gt;&gt;<br>感谢<a href="https://zhangshuqiao.org/" target="_blank" rel="noopener">张书樵大神</a>的<a href="https://github.com/stevenjoezhang/live2d-widget" target="_blank" rel="noopener">Live2D项目</a><br>把项目文件解压到Hexo/source/live2d-widget/没有<code>live2d-widget</code>要手动创建<br>要自定义看板娘初始加载模型或者互动话语的话，改live2d-widget/autoload.js&gt;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; const live2d_path &#x3D; &quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;stevenjoezhang&#x2F;live2d-widget&#x2F;&quot;;</span><br><span class="line">const live2d_path &#x3D; &quot;&#x2F;live2d-widget&#x2F;&quot;;</span><br></pre></td></tr></table></figure>
+<p>在Hexo根目录<code>/themes/next/layout/_layout.swing</code>中，<code>&lt;/body&gt;</code> 之前增加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;&#x2F;live2d-widget&#x2F;autoload.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<p>在 <code>&lt;/head&gt;</code>之前增加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;font-awesome&#x2F;css&#x2F;font-awesome.min.css&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>在主题配置文件中新增</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">live2d:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+<p>自定义看板娘大小、位置或者其他样式，修改waifu.css<br>自定义看板娘言语互动，修改waifu-tips.js和waifu-tips.json<br>怎么自定义，懒得看了······</p>
+<h3 id="时钟"><a href="#时钟" class="headerlink" title="时钟"></a>时钟</h3><p>代码，导入，标注主配置文件</p>
+<h3 id="分类页"><a href="#分类页" class="headerlink" title="分类页"></a>分类页</h3><p>感觉还是要改一下，打开浏览器f12可以边改边看效果，虽然还是没改好，a标签下面那条横线没去掉 最后把css样式复制到style保存就行了。<br><img src="s.png" alt=""></p>
+<h3 id="底部爱心"><a href="#底部爱心" class="headerlink" title="底部爱心"></a>底部爱心</h3><p><code>\themes\next\layout\_partials\footer.swig</code>文件，修改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;span class&#x3D;&quot;with-love&quot; id&#x3D;&quot;animate&quot; style&#x3D;&quot;font-size: 13px&quot;&gt;</span><br><span class="line">  &lt;i class&#x3D;&quot;fa fa-heart&quot;&gt;&lt;&#x2F;i&gt;</span><br><span class="line">&lt;&#x2F;span&gt;</span><br></pre></td></tr></table></figure>
+<p>然后再打开<code>\themes\next\source\css\_common\outline\footer\footer.styl</code>改成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">if hexo-config(&#39;footer.icon.animated&#39;) &#123;</span><br><span class="line">  #animate &#123;</span><br><span class="line">    animation: iconAnimate 1.88s ease-in-out infinite;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.with-love &#123;</span><br><span class="line">  display: inline-block;</span><br><span class="line">  margin: 0 5px;</span><br><span class="line">  color: #FF291D;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>插件    <a href="https://hexo.io/plugins/#admin" target="_blank" rel="noopener">地址直通车</a></p>
+<h2 id="主题开发"><a href="#主题开发" class="headerlink" title="主题开发"></a>主题开发</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init D:&#x2F;521&#x2F;Byself</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">============本文结束( ´◔ ‸◔`)感谢您的阅读============</div>
+    
+</div>
+      
+    </div>
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>W7
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2020/03/21/%E4%BC%98%E5%8C%96%E4%B8%BB%E9%A2%98/" title="优化主题">http://yoursite.com/2020/03/21/优化主题/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/hexo/" rel="tag"># hexo</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/19/%E5%8F%8B%E9%93%BE/" rel="prev" title="友链">
+      <i class="fa fa-chevron-left"></i> 友链
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/23/%E8%B7%B3%E8%BF%87%E6%B8%B2%E6%9F%93/" rel="next" title="跳过渲染">
+      跳过渲染 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo-init-xxx"><span class="nav-number">1.</span> <span class="nav-text">hexo init &#x2F;xxx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#还是继续用next"><span class="nav-number">2.</span> <span class="nav-text">还是继续用next</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#菜单栏："><span class="nav-number">3.</span> <span class="nav-text">菜单栏：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#友链"><span class="nav-number">4.</span> <span class="nav-text">友链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改回到顶部"><span class="nav-number">5.</span> <span class="nav-text">修改回到顶部</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#社交链接"><span class="nav-number">6.</span> <span class="nav-text">社交链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#头像"><span class="nav-number">7.</span> <span class="nav-text">头像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#圆角"><span class="nav-number">8.</span> <span class="nav-text">圆角</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#半透明"><span class="nav-number">9.</span> <span class="nav-text">半透明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#背景图"><span class="nav-number">10.</span> <span class="nav-text">背景图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#还是加上分类吧，"><span class="nav-number">11.</span> <span class="nav-text">还是加上分类吧，</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加搜索"><span class="nav-number">12.</span> <span class="nav-text">添加搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文末提醒"><span class="nav-number">13.</span> <span class="nav-text">文末提醒</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#鼠标点击效果"><span class="nav-number">14.</span> <span class="nav-text">鼠标点击效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码框复制按钮"><span class="nav-number">15.</span> <span class="nav-text">代码框复制按钮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加载条"><span class="nav-number">16.</span> <span class="nav-text">加载条</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#鼠标"><span class="nav-number">17.</span> <span class="nav-text">鼠标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标签页"><span class="nav-number">18.</span> <span class="nav-text">标签页</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#readmore"><span class="nav-number">19.</span> <span class="nav-text">readmore</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2D看板娘"><span class="nav-number">20.</span> <span class="nav-text">2D看板娘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时钟"><span class="nav-number">21.</span> <span class="nav-text">时钟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分类页"><span class="nav-number">22.</span> <span class="nav-text">分类页</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#底部爱心"><span class="nav-number">23.</span> <span class="nav-text">底部爱心</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主题开发"><span class="nav-number"></span> <span class="nav-text">主题开发</span></a></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="W7"
+      src="/images/head.jpg">
+  <p class="site-author-name" itemprop="name">W7</p>
+  <div class="site-description" itemprop="description">知识是一种乐趣，好奇是知识的萌芽</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wemaxel" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wemaxel" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:i@wqian.top" title="E-Mail → mailto:i@wqian.top" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/5529099160?is_all=1" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;5529099160?is_all&#x3D;1" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/images/weichat.jpg" title="WeChat → &#x2F;images&#x2F;weichat.jpg"><i class="fa fa-fw fa-weixin"></i></a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+      <div style="">
+  <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+</div>
+<script>
+(function(){
+
+   var digit=
+    [
+        [
+            [0,0,1,1,1,0,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,0,1,1,0],
+            [0,0,1,1,1,0,0]
+        ],//0
+        [
+            [0,0,0,1,1,0,0],
+            [0,1,1,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [1,1,1,1,1,1,1]
+        ],//1
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,1,1],
+            [1,1,1,1,1,1,1]
+        ],//2
+        [
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//3
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,0],
+            [0,0,1,1,1,1,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,1,1,0],
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,1]
+        ],//4
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,1,1,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//5
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//6
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0]
+        ],//7
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//8
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,1,1,0,0,0,0]
+        ],//9
+        [
+            [0,0,0,0,0,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,0,0,0]
+        ]//:
+    ];
+
+var canvas = document.getElementById('canvas');
+
+if(canvas.getContext){
+    var cxt = canvas.getContext('2d');
+    //声明canvas的宽高
+    var H = 100,W = 700;
+    canvas.height = H;
+    canvas.width = W;
+    cxt.fillStyle = '#f00';
+    cxt.fillRect(10,10,50,50);
+
+    //存储时间数据
+    var data = [];
+    //存储运动的小球
+    var balls = [];
+    //设置粒子半径
+    var R = canvas.height/20-1;
+    (function(){
+        var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+        //存储时间数字，由十位小时、个位小时、冒号、十位分钟、个位分钟、冒号、十位秒钟、个位秒钟这7个数字组成
+        data.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+    })();
+
+    /*生成点阵数字*/
+    function renderDigit(index,num){
+        for(var i = 0; i < digit[num].length; i++){
+            for(var j = 0; j < digit[num][i].length; j++){
+                if(digit[num][i][j] == 1){
+                    cxt.beginPath();
+                    cxt.arc(14*(R+2)*index + j*2*(R+1)+(R+1),i*2*(R+1)+(R+1),R,0,2*Math.PI);
+                    cxt.closePath();
+                    cxt.fill();
+                }
+            }
+        }
+    }
+
+    /*更新时钟*/
+    function updateDigitTime(){
+        var changeNumArray = [];
+        var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+        var NewData = [];
+        NewData.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+        for(var i = data.length-1; i >=0 ; i--){
+            //时间发生变化
+            if(NewData[i] !== data[i]){
+                //将变化的数字值和在data数组中的索引存储在changeNumArray数组中
+                changeNumArray.push(i+'_'+(Number(data[i])+1)%10);
+            }
+        }
+        //增加小球
+        for(var i = 0; i< changeNumArray.length; i++){
+            addBalls.apply(this,changeNumArray[i].split('_'));
+        }
+        data = NewData.concat();
+    }
+
+    /*更新小球状态*/
+    function updateBalls(){
+        for(var i = 0; i < balls.length; i++){
+            balls[i].stepY += balls[i].disY;
+            balls[i].x += balls[i].stepX;
+            balls[i].y += balls[i].stepY;
+            if(balls[i].x > W + R || balls[i].y > H + R){
+                balls.splice(i,1);
+                i--;
+            }
+        }
+    }
+
+    /*增加要运动的小球*/
+    function addBalls(index,num){
+        var numArray = [1,2,3];
+        var colorArray =  ["#3BE","#09C","#A6C","#93C","#9C0","#690","#FB3","#F80","#F44","#C00"];
+        for(var i = 0; i < digit[num].length; i++){
+            for(var j = 0; j < digit[num][i].length; j++){
+                if(digit[num][i][j] == 1){
+                    var ball = {
+                        x:14*(R+2)*index + j*2*(R+1)+(R+1),
+                        y:i*2*(R+1)+(R+1),
+                        stepX:Math.floor(Math.random() * 4 -2),
+                        stepY:-2*numArray[Math.floor(Math.random()*numArray.length)],
+                        color:colorArray[Math.floor(Math.random()*colorArray.length)],
+                        disY:1
+                    };
+                    balls.push(ball);
+                }
+            }
+        }
+    }
+
+    /*渲染*/
+    function render(){
+        //重置画布宽度，达到清空画布的效果
+        canvas.height = 100;
+        //渲染时钟
+        for(var i = 0; i < data.length; i++){
+            renderDigit(i,data[i]);
+        }
+        //渲染小球
+        for(var i = 0; i < balls.length; i++){
+            cxt.beginPath();
+            cxt.arc(balls[i].x,balls[i].y,R,0,2*Math.PI);
+            cxt.fillStyle = balls[i].color;
+            cxt.closePath();
+            cxt.fill();
+        }
+    }
+
+    clearInterval(oTimer);
+    var oTimer = setInterval(function(){
+        //更新时钟
+        updateDigitTime();
+        //更新小球状态
+        updateBalls();
+        //渲染
+        render();
+    },50);
+}
+
+})();
+</script>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+<span class="with-love" id="animate" style="font-size: 13px">
+  <i class="fa fa-heart"></i>
+</span>
+  <span class="author" itemprop="copyrightHolder">W7</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  <!-- 页面点击心形 -->
+<script type="text/javascript" src="/js/clicklove.js"></script>
+<script src="/live2d-widget/autoload.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","width":230,"display":"post","padding":15,"offset":10,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="●万维网:World Wide Web是一种基于超文本和HTTP的、全球性的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web基础">
+<meta property="og:url" content="http://yoursite.com/2020/04/11/web%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="W7">
+<meta property="og:description" content="●万维网:World Wide Web是一种基于超文本和HTTP的、全球性的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2020/04/11/web%E5%9F%BA%E7%A1%80/get.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/04/11/web%E5%9F%BA%E7%A1%80/x.jpg">
+<meta property="article:published_time" content="2020-04-11T14:43:28.000Z">
+<meta property="article:modified_time" content="2020-04-13T07:46:38.277Z">
+<meta property="article:author" content="W7">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/04/11/web%E5%9F%BA%E7%A1%80/get.jpg">
+
+<link rel="canonical" href="http://yoursite.com/2020/04/11/web%E5%9F%BA%E7%A1%80/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>web基础 | W7</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">W7</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">欢迎光临本破站</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>链接</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-fw fa-calendar"></i>葵花宝典</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/11/web%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="W7">
+      <meta itemprop="description" content="知识是一种乐趣，好奇是知识的萌芽">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="W7">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          web基础
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-11 22:43:28" itemprop="dateCreated datePublished" datetime="2020-04-11T22:43:28+08:00">2020-04-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-13 15:46:38" itemprop="dateModified" datetime="2020-04-13T15:46:38+08:00">2020-04-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index"><span itemprop="name">web</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>●万维网:<code>World Wide Web</code>是一种基于超文本和HTTP的、全球性的<a id="more"></a>、动态交互的、跨平台的分布式图形信息系统。为方便浏览者在Internet上查找和浏览信息提供了图形化的、易于访问的直观界面而建立在Internet上的一种网络服务。<br>●因特网:是指连接计算机的网络是由于许多小的网络(子网)互联而成的一个逻辑网，每个子网中连接着若干台计算机(主机)。<br>●超文本:Hypertext,是一种可以显示在电脑显示器或其他电子设备的文本，超文本是用超链接的方法，将各种不同空间的文字信息组织在一起的网状文本。<br>●域名:Domain Name<br>Ip地址: <code>0.0.0.0 ~ 255.255.255.255</code>是由一串用点分隔的名字组成的Internet_上某一台计算机或计算机组的名称，用于在数据传输时对计算机的定位标识<br>●DNS:Domain Name Server是一种组织成域层次结构的计算机和网络服务命名系统,它所提供的服务是用来将主机名和域名转换为IP地址的工作<br><del>web前后端的交互和浏览器的工作流程就懒得写了，</del></p>
+<h2 id="从认识url开始"><a href="#从认识url开始" class="headerlink" title="从认识url开始"></a>从认识url开始</h2><p>&emsp;&emsp;URL的全称统一资源定位符(Uniform Resource Locator),是对可以从互联网上得到的资源的位置和访问方法的一种简洁的表示，是互联网上标准资源的地址。互联网上的每个文件都有一个唯一的URL ,它包含的信息指出文件的位置以及浏览器应该怎么处理它。</p>
+<h3 id="url组成："><a href="#url组成：" class="headerlink" title="url组成："></a>url组成：</h3><p><code>scheme:</code> <code>//</code> <code>login:password</code> <code>@address:</code> <code>port</code> <code>/path to resource</code> <code>?query_string</code> <code>#fragment</code></p>
+<h3 id="scheme"><a href="#scheme" class="headerlink" title="scheme"></a>scheme</h3><p>Scheme就是用来指定使用的传输协议,其中最常见的就是HTTP协议。它也是互联网中应用最多的。<br>其它常用的协议还有:<br>    ➢file: 用于访问资源位于本地计算机上的文件。<br>    ➢ftp:用于访问FTP服务器上的资源。<br>    ➢https: 通过SSL协议的HTTP访问web服务器资源。<br>    ➢mailto:访问资源属于电子邮件地址,通过SMTP协议访问。<br>    ➢ed2k、 flashget、 thunde等 ,通过支持专用下载协议的P2P软件访问资源。</p>
+<h3 id=""><a href="#" class="headerlink" title="//"></a>//</h3><p>这是URL层级URL标记符,根据RFC 1738规定的语法,在授权信息之前,每个层级结构的URL中都会包括固定的<code>&quot;//&quot;</code>符号。</p>
+<p>非层级结构的URL: <code>mailto:</code></p>
+<h3 id="login-password"><a href="#login-password" class="headerlink" title="login:password"></a>login:password</h3><p>访问资源的身份验证。<br>在URL中,身份验证属于可选项,在向服务器申请资源时,在某些情况下，需要指定一个用户名和密码。如果没有身份验证字段,浏览器默认以匿名的方式访问资源。</p>
+<h3 id="address"><a href="#address" class="headerlink" title="@address:"></a>@address:</h3><p>完整的层级URL,必须有一个域名、IPv4或者IPv6地址作为请求服务器的位置。域名不区分大小写, IPv6需要括在方括号中。</p>
+<h3 id="port"><a href="#port" class="headerlink" title="port"></a>port</h3><p>服务器端口是URL中可选内容,在没有指定端口时,会默认去访问协议的标准端口。如http的默认端口为80.基本上浏览器支持的协议都会有关联的默认服务接口。不过默认接口可以在URL中进行修改。</p>
+<h3 id="path-to-resource"><a href="#path-to-resource" class="headerlink" title="/path to resource"></a>/path to resource</h3><p>URL的这部分被称为层级文件路径,这一结构来源自UNIX目录语义,因此保留了对<code>/../</code>,<code>/./</code>的支持。</p>
+<h3 id="query-string"><a href="#query-string" class="headerlink" title="?query_string"></a>?query_string</h3><p>查询字符串是一个非必须的字段,只要负责将一系列非层级格式的任意参数传递给服务器。可同时传递多个参数,参数之间用”&amp;”符号连接,每个参数名与值用”=”隔开。</p>
+<h3 id="fragment"><a href="#fragment" class="headerlink" title="#fragment"></a>#fragment</h3><p>片段ID同样是应用的位置有别于查询字符串,他应用于客户端,片段ID值并不会回传至服务端。在实际场景下,片段ID-般用于指向页面中的某个锚点,将片段ID与与预先设置的锚点名称匹配,并滚到相应的位置。</p>
+<h2 id="浏览器对url解析流程"><a href="#浏览器对url解析流程" class="headerlink" title="浏览器对url解析流程"></a>浏览器对url解析流程</h2><h3 id="提取协议名"><a href="#提取协议名" class="headerlink" title="提取协议名"></a>提取协议名</h3><p>浏览器接收到url之后会查找第一个”:”, 找到左边的便是协议名。</p>
+<h3 id="去除层级标识符"><a href="#去除层级标识符" class="headerlink" title="去除层级标识符"></a>去除层级标识符</h3><p>字符串//应该算跟在协议名后面的,如果发现有该字符则会跳过该字符,如果没有找到便不管了，所以http:baidu.com也是可以访问的。</p>
+<h3 id="获取授权信息部分"><a href="#获取授权信息部分" class="headerlink" title="获取授权信息部分"></a>获取授权信息部分</h3><p>紧接着会依次扫描url,以/、?、#,那个先出现为准来截取URL，如果存在认证信息 ,提取出来的再查找@符号,如果找到, @符号左边便是登录信息。</p>
+<h3 id="提取目标地址"><a href="#提取目标地址" class="headerlink" title="提取目标地址"></a>提取目标地址</h3><p>第3步提取授权信息之后@符号右边便是目标地址信息。目标地址信息第一个”:”分开的就是主机名和端口号。</p>
+<h3 id="确认路径"><a href="#确认路径" class="headerlink" title="确认路径"></a>确认路径</h3><p>在目标地址部分结尾跟着一个正斜杠 ,接下来扫描?和#直至结尾,那个先出现便以那个为准,截取出来中间部分即路径信息。</p>
+<h3 id="提取查询字符串"><a href="#提取查询字符串" class="headerlink" title="提取查询字符串"></a>提取查询字符串</h3><p>在第5步中,如果存在”?”, 便会扫描#或者至字符串结尾,中间部分便是查询字段。</p>
+<h3 id="提取片段ID"><a href="#提取片段ID" class="headerlink" title="提取片段ID"></a>提取片段ID</h3><p>如果成功解析完上一条信息,它最后还跟着#号那么从这个符号到字符串的结尾便算片段ID了,片段ID是不会发送到服务器的! 一般用来跳到A标签的锚链接.</p>
+<h2 id="http协议简介："><a href="#http协议简介：" class="headerlink" title="http协议简介："></a>http协议简介：</h2><h3 id="关于协议"><a href="#关于协议" class="headerlink" title="关于协议"></a>关于协议</h3><p>协议是指计算机通信网络中两台计算机之间进行通信所必须共同遵守的规定或规则。HTTP<code>( HyperText Transfer Protocol )</code>超文本传输协议,是从服务器传输超文本到本地浏览器的传输协议。</p>
+<h3 id="http协议工作原理"><a href="#http协议工作原理" class="headerlink" title="http协议工作原理"></a>http协议工作原理</h3><h4 id="HTTP的请求-响应模式"><a href="#HTTP的请求-响应模式" class="headerlink" title="HTTP的请求/响应模式"></a>HTTP的请求/响应模式</h4><p>当用户通过浏览器访问<code>www.baidu.com</code>时会发生以下动作:<br>1、浏览器连接到服务器HTTP端口(默认80端口),建立一个TCP连接。<br>2、浏览器请求服务器上的index.html文档。<del>http请求报文</del><br>3、服务器给出响应,将文档index.htmI发送给浏览器。<del>http响应报文</del><br>4、传输完成，服务器主动关闭TCP连接。<br>5、浏览器解析渲染html内容,呈现给用户。</p>
+<h4 id="HTTP连接方式"><a href="#HTTP连接方式" class="headerlink" title="HTTP连接方式"></a>HTTP连接方式</h4><p>●非持久性连接<br>浏览器每请求一个文档,就创建一个连接 ，当文档传输完成之后立即释放连接。对于请求Web页面中包含多个其他文档对象的链接时(如视频、图片、声音等)，每个请求链接都需要创建新的连接，效率底下。建立TCP连接请求文档1…<br>●持久性连接<br>即在一个连接中,可以进行多个文档的请求和响应HTTP有一个Connection字段,该字段为Keep-alive时, TCP连接会保持一段时间，等后续所有请求接受和完成时,断开连接。连接时间可由双方商定。<br>####➢HTTP的无状态性<br>无状态是指协议对事物的处理没有记忆能力,同一个浏览器第二次打开Web应用同一个页面时,服务器并不知道客户曾经访问过。例如:在你购物车加入几件商品之后,此时需要跳转到支付界面。无状态的特性导致服务器无法知道你选购哪些商品。此时就引用了Cookie和Session机制来维持会话。</p>
+<h5 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h5><p>Cookie实际上是一小段的文本信息。客户端请求服务器,服务器就给客户端们颁发一个通行证,即Cookie。当浏览器再请求该网站时,浏览器把请求的网址连同该Cookie同提交给服务器。服务器检查该Cookie ,以此来辨认用户状态。</p>
+<h5 id="session"><a href="#session" class="headerlink" title="session"></a>session</h5><p>Session是另一种记录客户状态的机制,不同的是Cookie保存在客户端浏览器中,而Session保存在服务器上。客户端浏览器访问服务器的时候,服务器把客户端信息以某种形式记录在服务器上。这就是Session。客户端浏览器再次访问时只需要从该Session中查找该客户的状态就可以了。</p>
+<h2 id="http报文结构"><a href="#http报文结构" class="headerlink" title="http报文结构"></a>http报文结构</h2><h3 id="请求报文"><a href="#请求报文" class="headerlink" title="请求报文"></a>请求报文</h3><p><img src="get.jpg" alt=""><br>请求行<br>请求报文中的方法方法是对所请求对象进行的操作,也就是一种命令。请求报文中的方法有:<br>GET：请求获取一个Web页面<br>HEAD：与GET方法相似,区别在于只获取Web页面首部,不获取主体。<br>POST；主要作用是执行操作,比如向服务器提交一个表单。<br>PUT：请求向服务器上传指定的资源。<br>DELETE：请求删除一个Web页面<br>TRACE：用于测试,要求服务器返回收到的请求。<br>MOVE：请求移动某个页面到指定位置<br>OPTION：请求服务器所支持哪些方法。<br>请求头<br>请求消息头部字段说明:<br>Host：消息头用于指定出现在被访问的完整URL的主机名称。<br>User-Agent：这个消息头提供与浏览器或生成请求的其他客户端软件有关的信息。<br>Accept：这个消息头用于告诉服务器客户端愿意接受哪些内容，如图像类型、办公文档格式等。<br>AcceptLanguage：用于声明服务器浏览器可以支持什么语言。<br>Accept-Encoding：这个消息头用于告诉服务器，客户端愿意接受哪些内容编码。<br>Referer：这个消息头用于指示提出当前请求的原始URL。<br>Cookie：提交此服务器向客户端发送的其他参数(服务器使用Set-Cookie消息头来设置Cookie,一般用于身份验证)<br>Connection：通知通信的另一方，是否在完成HTTP传输后关闭TCP连接。<br>请求体</p>
+<h3 id="响应报文"><a href="#响应报文" class="headerlink" title="响应报文"></a>响应报文</h3><p><img src="x.jpg" alt=""><br>响应行<br>状态码是响应报文状态行中包含的一个3位数字，指明请求是否被满足，如果没有满足，原因是什么。状态码分为以下五大类:<br>1xx：表示请求已接收，继续处理。（100:服务器正在处理客户请求。）<br>2xx：表示请求已被成功接收、理解、接受，（200 :请求成功。）<br>3xx：客户端被重定向到其他资源。</p>
+<pre><code>301 :表示本网页永久性转移到另一个地址。
+302 :重定向，浏览器自动跳转新连接。
+304:上次文档已经缓存，还可以继续使用。</code></pre><p>4xx：请求有语法错误或请求无法实现。</p>
+<pre><code>400 :请求语法有错误，服务器不能解析。
+403 :拒绝提供服务。
+404 :请求资源不存在。</code></pre><p>5xx：服务器执行请求时遇到错误。</p>
+<pre><code>500 :服务器错误。
+503 :服务器当前不能处理，请稍后再试。</code></pre><p>响应头<br>响应头部字段说明:<br>Date：响应返回的时间, GMT代表格林威治时间(北京市位于东8区,计北京时间要加8小时)。<br>Server：这个消息头提供所使用的Web服务器软件的相关信息。<br>Set-Cookie：这个消息头用于向浏览器发布cookie，浏览器会在随后的请求中将其返回给服务器。<br>Content-Type：这个消息头用于规定消息主体的内容类型。例如, HTML文档的内容类型为text/html.<br>Content-Length：这个消息头用于规定消息主体的字节长度。<br>Connection：通知通信的另一方，是否在完成HTTP传输后关闭TCP连接。</p>
+<p>响应体</p>
+
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">============本文结束( ´◔ ‸◔`)感谢您的阅读============</div>
+    
+</div>
+      
+    </div>
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>W7
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2020/04/11/web%E5%9F%BA%E7%A1%80/" title="web基础">http://yoursite.com/2020/04/11/web基础/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/10/app%E6%95%B0%E6%8D%AE%E5%8C%85/" rel="prev" title="app数据包">
+      <i class="fa fa-chevron-left"></i> app数据包
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/04/12/sql%E5%8E%9F%E7%90%86/" rel="next" title="sql基础">
+      sql基础 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#从认识url开始"><span class="nav-number">1.</span> <span class="nav-text">从认识url开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#url组成："><span class="nav-number">1.1.</span> <span class="nav-text">url组成：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scheme"><span class="nav-number">1.2.</span> <span class="nav-text">scheme</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">1.3.</span> <span class="nav-text">&#x2F;&#x2F;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#login-password"><span class="nav-number">1.4.</span> <span class="nav-text">login:password</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#address"><span class="nav-number">1.5.</span> <span class="nav-text">@address:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#port"><span class="nav-number">1.6.</span> <span class="nav-text">port</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#path-to-resource"><span class="nav-number">1.7.</span> <span class="nav-text">&#x2F;path to resource</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#query-string"><span class="nav-number">1.8.</span> <span class="nav-text">?query_string</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fragment"><span class="nav-number">1.9.</span> <span class="nav-text">#fragment</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器对url解析流程"><span class="nav-number">2.</span> <span class="nav-text">浏览器对url解析流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#提取协议名"><span class="nav-number">2.1.</span> <span class="nav-text">提取协议名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#去除层级标识符"><span class="nav-number">2.2.</span> <span class="nav-text">去除层级标识符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取授权信息部分"><span class="nav-number">2.3.</span> <span class="nav-text">获取授权信息部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提取目标地址"><span class="nav-number">2.4.</span> <span class="nav-text">提取目标地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#确认路径"><span class="nav-number">2.5.</span> <span class="nav-text">确认路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提取查询字符串"><span class="nav-number">2.6.</span> <span class="nav-text">提取查询字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提取片段ID"><span class="nav-number">2.7.</span> <span class="nav-text">提取片段ID</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http协议简介："><span class="nav-number">3.</span> <span class="nav-text">http协议简介：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于协议"><span class="nav-number">3.1.</span> <span class="nav-text">关于协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http协议工作原理"><span class="nav-number">3.2.</span> <span class="nav-text">http协议工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP的请求-响应模式"><span class="nav-number">3.2.1.</span> <span class="nav-text">HTTP的请求&#x2F;响应模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP连接方式"><span class="nav-number">3.2.2.</span> <span class="nav-text">HTTP连接方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#cookie"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">cookie</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#session"><span class="nav-number">3.2.2.2.</span> <span class="nav-text">session</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http报文结构"><span class="nav-number">4.</span> <span class="nav-text">http报文结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请求报文"><span class="nav-number">4.1.</span> <span class="nav-text">请求报文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#响应报文"><span class="nav-number">4.2.</span> <span class="nav-text">响应报文</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="W7"
+      src="/images/head.jpg">
+  <p class="site-author-name" itemprop="name">W7</p>
+  <div class="site-description" itemprop="description">知识是一种乐趣，好奇是知识的萌芽</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wemaxel" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wemaxel" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:i@wqian.top" title="E-Mail → mailto:i@wqian.top" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/5529099160?is_all=1" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;5529099160?is_all&#x3D;1" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/images/weichat.jpg" title="WeChat → &#x2F;images&#x2F;weichat.jpg"><i class="fa fa-fw fa-weixin"></i></a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+      <div style="">
+  <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+</div>
+<script>
+(function(){
+
+   var digit=
+    [
+        [
+            [0,0,1,1,1,0,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,0,1,1,0],
+            [0,0,1,1,1,0,0]
+        ],//0
+        [
+            [0,0,0,1,1,0,0],
+            [0,1,1,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [1,1,1,1,1,1,1]
+        ],//1
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,1,1],
+            [1,1,1,1,1,1,1]
+        ],//2
+        [
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//3
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,0],
+            [0,0,1,1,1,1,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,1,1,0],
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,1]
+        ],//4
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,1,1,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//5
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//6
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0]
+        ],//7
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//8
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,1,1,0,0,0,0]
+        ],//9
+        [
+            [0,0,0,0,0,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,0,0,0]
+        ]//:
+    ];
+
+var canvas = document.getElementById('canvas');
+
+if(canvas.getContext){
+    var cxt = canvas.getContext('2d');
+    //声明canvas的宽高
+    var H = 100,W = 700;
+    canvas.height = H;
+    canvas.width = W;
+    cxt.fillStyle = '#f00';
+    cxt.fillRect(10,10,50,50);
+
+    //存储时间数据
+    var data = [];
+    //存储运动的小球
+    var balls = [];
+    //设置粒子半径
+    var R = canvas.height/20-1;
+    (function(){
+        var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+        //存储时间数字，由十位小时、个位小时、冒号、十位分钟、个位分钟、冒号、十位秒钟、个位秒钟这7个数字组成
+        data.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+    })();
+
+    /*生成点阵数字*/
+    function renderDigit(index,num){
+        for(var i = 0; i < digit[num].length; i++){
+            for(var j = 0; j < digit[num][i].length; j++){
+                if(digit[num][i][j] == 1){
+                    cxt.beginPath();
+                    cxt.arc(14*(R+2)*index + j*2*(R+1)+(R+1),i*2*(R+1)+(R+1),R,0,2*Math.PI);
+                    cxt.closePath();
+                    cxt.fill();
+                }
+            }
+        }
+    }
+
+    /*更新时钟*/
+    function updateDigitTime(){
+        var changeNumArray = [];
+        var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+        var NewData = [];
+        NewData.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+        for(var i = data.length-1; i >=0 ; i--){
+            //时间发生变化
+            if(NewData[i] !== data[i]){
+                //将变化的数字值和在data数组中的索引存储在changeNumArray数组中
+                changeNumArray.push(i+'_'+(Number(data[i])+1)%10);
+            }
+        }
+        //增加小球
+        for(var i = 0; i< changeNumArray.length; i++){
+            addBalls.apply(this,changeNumArray[i].split('_'));
+        }
+        data = NewData.concat();
+    }
+
+    /*更新小球状态*/
+    function updateBalls(){
+        for(var i = 0; i < balls.length; i++){
+            balls[i].stepY += balls[i].disY;
+            balls[i].x += balls[i].stepX;
+            balls[i].y += balls[i].stepY;
+            if(balls[i].x > W + R || balls[i].y > H + R){
+                balls.splice(i,1);
+                i--;
+            }
+        }
+    }
+
+    /*增加要运动的小球*/
+    function addBalls(index,num){
+        var numArray = [1,2,3];
+        var colorArray =  ["#3BE","#09C","#A6C","#93C","#9C0","#690","#FB3","#F80","#F44","#C00"];
+        for(var i = 0; i < digit[num].length; i++){
+            for(var j = 0; j < digit[num][i].length; j++){
+                if(digit[num][i][j] == 1){
+                    var ball = {
+                        x:14*(R+2)*index + j*2*(R+1)+(R+1),
+                        y:i*2*(R+1)+(R+1),
+                        stepX:Math.floor(Math.random() * 4 -2),
+                        stepY:-2*numArray[Math.floor(Math.random()*numArray.length)],
+                        color:colorArray[Math.floor(Math.random()*colorArray.length)],
+                        disY:1
+                    };
+                    balls.push(ball);
+                }
+            }
+        }
+    }
+
+    /*渲染*/
+    function render(){
+        //重置画布宽度，达到清空画布的效果
+        canvas.height = 100;
+        //渲染时钟
+        for(var i = 0; i < data.length; i++){
+            renderDigit(i,data[i]);
+        }
+        //渲染小球
+        for(var i = 0; i < balls.length; i++){
+            cxt.beginPath();
+            cxt.arc(balls[i].x,balls[i].y,R,0,2*Math.PI);
+            cxt.fillStyle = balls[i].color;
+            cxt.closePath();
+            cxt.fill();
+        }
+    }
+
+    clearInterval(oTimer);
+    var oTimer = setInterval(function(){
+        //更新时钟
+        updateDigitTime();
+        //更新小球状态
+        updateBalls();
+        //渲染
+        render();
+    },50);
+}
+
+})();
+</script>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+<span class="with-love" id="animate" style="font-size: 13px">
+  <i class="fa fa-heart"></i>
+</span>
+  <span class="author" itemprop="copyrightHolder">W7</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  <!-- 页面点击心形 -->
+<script type="text/javascript" src="/js/clicklove.js"></script>
+<script src="/live2d-widget/autoload.js"></script>
+</body>
+</html>
+
